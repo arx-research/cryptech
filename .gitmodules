@@ -223,3 +223,6 @@
 [submodule "openssl-engine"]
 	path = openssl-engine
 	url = https://git.cryptech.is/user/sra/openssl-engine.git
+[submodule "x25519_fpga_model.old"]
+	path = x25519_fpga_model.old
+	url = https://git.cryptech.is/user/shatov/x25519_fpga_model.old.git
