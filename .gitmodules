@@ -1,9 +1,6 @@
 [submodule "aes_speed"]
 	path = aes_speed
 	url = https://git.cryptech.is/core/cipher/aes_speed.git
-[submodule "aes"]
-	path = aes
-	url = https://git.cryptech.is/core/cipher/aes.git
 [submodule "chacha"]
 	path = chacha
 	url = https://git.cryptech.is/core/cipher/chacha.git
@@ -226,3 +223,39 @@
 [submodule "x25519_fpga_model.old"]
 	path = x25519_fpga_model.old
 	url = https://git.cryptech.is/user/shatov/x25519_fpga_model.old.git
+[submodule "releng/alpha"]
+	path = releng/alpha
+	url = https://git.cryptech.is/releng/alpha.git
+[submodule "releng/novena"]
+	path = releng/novena
+	url = https://git.cryptech.is/releng/novena.git
+[submodule "user/ft/tamper"]
+	path = user/ft/tamper
+	url = https://git.cryptech.is/user/ft/tamper.git
+[submodule "sw/tamper"]
+	path = sw/tamper
+	url = https://git.cryptech.is/sw/tamper.git
+[submodule "user/jakob/tamper"]
+	path = user/jakob/tamper
+	url = https://git.cryptech.is/user/jakob/tamper.git
+[submodule "user/js/mkmif"]
+	path = user/js/mkmif
+	url = https://git.cryptech.is/user/js/mkmif.git
+[submodule "core/util/mkmif"]
+	path = core/util/mkmif
+	url = https://git.cryptech.is/core/util/mkmif.git
+[submodule "user/ln5/tamper"]
+	path = user/ln5/tamper
+	url = https://git.cryptech.is/user/ln5/tamper.git
+[submodule "user/paul/libcli"]
+	path = user/paul/libcli
+	url = https://git.cryptech.is/user/paul/libcli.git
+[submodule "user/shatov/ModExpA7"]
+	path = user/shatov/ModExpA7
+	url = https://git.cryptech.is/user/shatov/ModExpA7.git
+[submodule "user/shatov/ecdsa256"]
+	path = user/shatov/ecdsa256
+	url = https://git.cryptech.is/user/shatov/ecdsa256.git
+[submodule "user/shatov/ecdsa384"]
+	path = user/shatov/ecdsa384
+	url = https://git.cryptech.is/user/shatov/ecdsa384.git
