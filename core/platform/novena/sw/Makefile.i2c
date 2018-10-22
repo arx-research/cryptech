@@ -1,0 +1,51 @@
+CC = gcc
+AR = AR
+CFLAGS = -Wall -fPIC
+
+LIB = libcryptech_i2c.a
+BIN = hash_i2c hash_tester_i2c trng_extractor_i2c trng_tester_i2c aes_tester_i2c modexp_tester_i2c
+INC = cryptech.h
+
+PREFIX = /usr/local
+LIB_DIR = $(PREFIX)/lib
+BIN_DIR = $(PREFIX)/bin
+INC_DIR = $(PREFIX)/include
+
+all: $(LIB) $(BIN)
+
+%.o: %.c $(INC)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+libcryptech_i2c.a: tc_i2c.o capability.o
+	$(AR) rcs $@ $^
+
+hash_tester_i2c: hash_tester.o $(LIB)
+	$(CC) -o $@ $^
+
+trng_tester_i2c: trng_tester.o $(LIB)
+	$(CC) -o $@ $^
+
+aes_tester_i2c: aes_tester.o $(LIB)
+	$(CC) -o $@ $^
+
+modexp_tester_i2c: modexp_tester.o $(LIB)
+	$(CC) -o $@ $^
+
+hash_i2c: hash.o $(LIB)
+	$(CC) -o $@ $^
+
+trng_extractor_i2c: trng_extractor.o $(LIB)
+	$(CC) -o $@ $^
+
+install: $(LIB) $(BIN) $(INC)
+	install $(LIB) $(LIB_DIR)
+	install $(BIN) $(BIN_DIR)
+	install $(INC) $(INC_DIR)
+
+uninstall:
+	rm -f $(LIB_DIR)/$(LIB)
+	rm -f $(foreach bin,$(BIN),$(BIN_DIR)/$(bin))
+	rm -f $(INC_DIR)/$(INC)
+
+clean:
+	rm -f *.o $(LIB) $(BIN)

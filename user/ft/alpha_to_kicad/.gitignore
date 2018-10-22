@@ -1,0 +1,18 @@
+*~
+rev03-Altium
+git-init.sh
+altium2kicad
+altium2kicad?*
+hardware
+rev03-KiCad/Cryptech Alpha.kicad_pcb.*
+rev03-KiCad/Cryptech Alpha.pro
+rev03-KiCad/Cryptech Alpha.sch
+rev03-KiCad/sym-lib-table
+.idea
+rev03-KiCad/wrlshp
+rev03-KiCad?*
+tmp
+*.kicad_pcb-bak
+*.bak
+*-cache.lib
+*saved*

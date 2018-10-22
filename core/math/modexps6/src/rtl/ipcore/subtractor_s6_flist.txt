@@ -1,0 +1,14 @@
+# Output products list for <subtractor_s6>
+subtractor_s6.asy
+subtractor_s6.gise
+subtractor_s6.ngc
+subtractor_s6.sym
+subtractor_s6.v
+subtractor_s6.veo
+subtractor_s6.xco
+subtractor_s6.xise
+subtractor_s6\doc\c_addsub_v11_0_readme.txt
+subtractor_s6\doc\c_addsub_v11_0_vinfo.html
+subtractor_s6\doc\ds214_addsub.pdf
+subtractor_s6_flist.txt
+subtractor_s6_xmdf.tcl

@@ -1,0 +1,21 @@
+(module PLS-2 (layer F.Cu) (tedit 4289BEAB)
+  (attr smd)
+  (fp_text reference JP2 (at 0 0) (layer F.SilkS) hide
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (fp_text value "Wurth 2pins connector (for jumper)" (at 0 0) (layer Cmts.User)
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (pad 1 thru_hole rect (at -1.27 0) (size 1.5 1.5) (drill 1) (layers *.Cu *.Paste *.Mask))
+  (pad 2 thru_hole circle (at 1.27 0) (size 1.5 1.5) (drill 1) (layers *.Cu *.Paste *.Mask))
+  (model "wrlshp/User Library-Header1x2.wrl"
+    (offset (xyz 5.675121914768218 11.80693582267761 -6.799998997874261))
+    (scale (xyz 0.39370078740158 0.39370078740158 0.39370078740158))
+    (rotate (xyz 270 360 180))
+  )
+  (model wrlshp/3416A7AC-A52A.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+)

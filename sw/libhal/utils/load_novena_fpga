@@ -1,0 +1,24 @@
+#!/bin/sh -
+# Voodoo to load a new bitstream image into the FPGA on a Novena PVT-1.
+
+if test $# -ne 1 || test ! -f "$1"
+then
+    echo 1>&2 "usage: $0 bitstream-file"
+    exit 1
+fi
+
+echo "Setting export of reset pin"
+echo 135 > /sys/class/gpio/export
+
+echo "Setting reset pin to out"
+echo out > /sys/class/gpio/gpio135/direction
+
+echo "Flipping reset"
+echo 0 > /sys/class/gpio/gpio135/value
+echo 1 > /sys/class/gpio/gpio135/value
+
+echo "Configuring FPGA from $1"
+dd if="$1" of=/dev/spidev2.0 bs=32
+
+echo "Turning on clock to FPGA"
+eim_peek_poke --write 0x020c8160 0x00000d2b

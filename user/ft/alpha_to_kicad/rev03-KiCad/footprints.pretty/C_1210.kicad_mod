@@ -1,0 +1,21 @@
+(module C_1210 (layer F.Cu) (tedit 4289BEAB)
+  (attr smd)
+  (fp_text reference C210 (at 0 0) (layer B.SilkS) hide
+    (effects (font (size 1.524 1.524) (thickness 0.05)) (justify mirror))
+  )
+  (fp_text value "1210 CAPACITOR X5R 6.3V" (at 0 0) (layer Cmts.User)
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (pad 1 smd rect (at 0 -1.5 270) (size 1.6 2.6) (layers F.Cu F.Paste F.Mask))
+  (pad 2 smd rect (at 0 1.5 270) (size 1.6 2.6) (layers F.Cu F.Paste F.Mask))
+  (model wrlshp/SW3dPS-CAPC3225.wrl
+    (offset (xyz 1.249933981227875 0 1.250000021226883))
+    (scale (xyz 0.39370078740158 0.39370078740158 0.39370078740158))
+    (rotate (xyz 270 360 90))
+  )
+  (model wrlshp/F26EE9BE-B6B0.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 180))
+  )
+)

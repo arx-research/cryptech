@@ -1,0 +1,1286 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr B 17000 11000
+encoding utf-8
+Sheet 25 27
+Title "rev02_23"
+Date "15 10 2016"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 6600 5000 0    60   ~ 12
+<-- Place small 0.47 uF caps right under the BGA package\n<-- Place medium 4.7 uF caps very close to the BGA package\n<-- Place large 47 uF caps not far from the BGA package\n<-- Place one of four 47 uF caps on every side of the BGA p.\n<-- Distribute six sets of caps among six FPGA I/O banks
+Text Notes 2500 4100 0    60   ~ 12
+*) Decoupling capacitors for VCCO
+Text Notes 8490 10200 0    54   ~ 12
+FPGA VCCO bypass capacitors
+Text Notes 4660 4590 0    60   ~ 12
+C181
+Text Notes 4660 4790 0    60   ~ 12
+0.47uF
+Text Notes 5160 4590 0    60   ~ 12
+C187
+Text Notes 5160 4790 0    60   ~ 12
+0.47uF
+Text Notes 5660 4590 0    60   ~ 12
+C193
+Text Notes 5660 4790 0    60   ~ 12
+0.47uF
+Text Notes 6160 4590 0    60   ~ 12
+C199
+Text Notes 6160 4790 0    60   ~ 12
+0.47uF
+Text Notes 4660 5490 0    60   ~ 12
+C182
+Text Notes 4660 5690 0    60   ~ 12
+0.47uF
+Text Notes 5160 5490 0    60   ~ 12
+C188
+Text Notes 5160 5690 0    60   ~ 12
+0.47uF
+Text Notes 5660 5490 0    60   ~ 12
+C194
+Text Notes 5660 5690 0    60   ~ 12
+0.47uF
+Text Notes 6160 5490 0    60   ~ 12
+C200
+Text Notes 6160 5690 0    60   ~ 12
+0.47uF
+Text Notes 4660 6390 0    60   ~ 12
+C183
+Text Notes 4660 6590 0    60   ~ 12
+0.47uF
+Text Notes 5160 6390 0    60   ~ 12
+C189
+Text Notes 5160 6590 0    60   ~ 12
+0.47uF
+Text Notes 5660 6390 0    60   ~ 12
+C195
+Text Notes 5660 6590 0    60   ~ 12
+0.47uF
+Text Notes 6160 6390 0    60   ~ 12
+C201
+Text Notes 6160 6590 0    60   ~ 12
+0.47uF
+Text Notes 4660 7290 0    60   ~ 12
+C184
+Text Notes 4660 7490 0    60   ~ 12
+0.47uF
+Text Notes 5160 7290 0    60   ~ 12
+C190
+Text Notes 5160 7490 0    60   ~ 12
+0.47uF
+Text Notes 5660 7290 0    60   ~ 12
+C196
+Text Notes 5660 7490 0    60   ~ 12
+0.47uF
+Text Notes 6160 7290 0    60   ~ 12
+C202
+Text Notes 6160 7490 0    60   ~ 12
+0.47uF
+Text Notes 4660 8190 0    60   ~ 12
+C185
+Text Notes 4660 8390 0    60   ~ 12
+0.47uF
+Text Notes 5160 8190 0    60   ~ 12
+C191
+Text Notes 5160 8390 0    60   ~ 12
+0.47uF
+Text Notes 5660 8190 0    60   ~ 12
+C197
+Text Notes 5660 8390 0    60   ~ 12
+0.47uF
+Text Notes 6160 8190 0    60   ~ 12
+C203
+Text Notes 6160 8390 0    60   ~ 12
+0.47uF
+Text Notes 4660 9090 0    60   ~ 12
+C186
+Text Notes 4660 9290 0    60   ~ 12
+0.47uF
+Text Notes 5160 9090 0    60   ~ 12
+C192
+Text Notes 5160 9290 0    60   ~ 12
+0.47uF
+Text Notes 5660 9090 0    60   ~ 12
+C198
+Text Notes 5660 9290 0    60   ~ 12
+0.47uF
+Text Notes 6160 9090 0    60   ~ 12
+C204
+Text Notes 6160 9290 0    60   ~ 12
+0.47uF
+Text Notes 3460 4590 0    60   ~ 12
+C169
+Text Notes 3460 4790 0    60   ~ 12
+4.7uF
+Text Notes 3960 4590 0    60   ~ 12
+C175
+Text Notes 3960 4790 0    60   ~ 12
+4.7uF
+Text Notes 3960 5490 0    60   ~ 12
+C176
+Text Notes 3960 5690 0    60   ~ 12
+4.7uF
+Text Notes 3460 5490 0    60   ~ 12
+C170
+Text Notes 3460 5690 0    60   ~ 12
+4.7uF
+Text Notes 3460 6390 0    60   ~ 12
+C171
+Text Notes 3460 6590 0    60   ~ 12
+4.7uF
+Text Notes 3960 6390 0    60   ~ 12
+C177
+Text Notes 3960 6590 0    60   ~ 12
+4.7uF
+Text Notes 3960 7290 0    60   ~ 12
+C178
+Text Notes 3960 7490 0    60   ~ 12
+4.7uF
+Text Notes 3460 7290 0    60   ~ 12
+C172
+Text Notes 3460 7490 0    60   ~ 12
+4.7uF
+Text Notes 3460 8190 0    60   ~ 12
+C173
+Text Notes 3460 8390 0    60   ~ 12
+4.7uF
+Text Notes 3960 8190 0    60   ~ 12
+C179
+Text Notes 3960 8390 0    60   ~ 12
+4.7uF
+Text Notes 3960 9090 0    60   ~ 12
+C180
+Text Notes 3960 9290 0    60   ~ 12
+4.7uF
+Text Notes 3460 9090 0    60   ~ 12
+C174
+Text Notes 3460 9290 0    60   ~ 12
+4.7uF
+Text Notes 1060 4590 0    60   ~ 12
+C165
+Text Notes 1060 4790 0    60   ~ 12
+47uF
+Text Notes 1560 4590 0    60   ~ 12
+C166
+Text Notes 1560 4790 0    60   ~ 12
+47uF
+Text Notes 2060 4590 0    60   ~ 12
+C167
+Text Notes 2060 4790 0    60   ~ 12
+47uF
+Text Notes 2560 4590 0    60   ~ 12
+C168
+Text Notes 2560 4790 0    60   ~ 12
+47uF
+$Comp
+L power:GND GND_176
+U 1 1 58023E87
+P 1000 4900
+F 0 "GND_176" H 1000 4900 20  0000 C CNN
+F 1 "+GND" H 1000 4830 30  0000 C CNN
+F 2 "" H 1000 4900 70  0000 C CNN
+F 3 "" H 1000 4900 70  0000 C CNN
+	1    1000 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_177
+U 1 1 58023E86
+P 1500 4900
+F 0 "GND_177" H 1500 4900 20  0000 C CNN
+F 1 "+GND" H 1500 4830 30  0000 C CNN
+F 2 "" H 1500 4900 70  0000 C CNN
+F 3 "" H 1500 4900 70  0000 C CNN
+	1    1500 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_178
+U 1 1 58023E85
+P 2000 4900
+F 0 "GND_178" H 2000 4900 20  0000 C CNN
+F 1 "+GND" H 2000 4830 30  0000 C CNN
+F 2 "" H 2000 4900 70  0000 C CNN
+F 3 "" H 2000 4900 70  0000 C CNN
+	1    2000 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_179
+U 1 1 58023E84
+P 2500 4900
+F 0 "GND_179" H 2500 4900 20  0000 C CNN
+F 1 "+GND" H 2500 4830 30  0000 C CNN
+F 2 "" H 2500 4900 70  0000 C CNN
+F 3 "" H 2500 4900 70  0000 C CNN
+	1    2500 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_180
+U 1 1 58023E83
+P 3400 4900
+F 0 "GND_180" H 3400 4900 20  0000 C CNN
+F 1 "+GND" H 3400 4830 30  0000 C CNN
+F 2 "" H 3400 4900 70  0000 C CNN
+F 3 "" H 3400 4900 70  0000 C CNN
+	1    3400 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_181
+U 1 1 58023E82
+P 3900 4900
+F 0 "GND_181" H 3900 4900 20  0000 C CNN
+F 1 "+GND" H 3900 4830 30  0000 C CNN
+F 2 "" H 3900 4900 70  0000 C CNN
+F 3 "" H 3900 4900 70  0000 C CNN
+	1    3900 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_182
+U 1 1 58023E81
+P 4600 4900
+F 0 "GND_182" H 4600 4900 20  0000 C CNN
+F 1 "+GND" H 4600 4830 30  0000 C CNN
+F 2 "" H 4600 4900 70  0000 C CNN
+F 3 "" H 4600 4900 70  0000 C CNN
+	1    4600 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_183
+U 1 1 58023E80
+P 5100 4900
+F 0 "GND_183" H 5100 4900 20  0000 C CNN
+F 1 "+GND" H 5100 4830 30  0000 C CNN
+F 2 "" H 5100 4900 70  0000 C CNN
+F 3 "" H 5100 4900 70  0000 C CNN
+	1    5100 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_184
+U 1 1 58023E7F
+P 5600 4900
+F 0 "GND_184" H 5600 4900 20  0000 C CNN
+F 1 "+GND" H 5600 4830 30  0000 C CNN
+F 2 "" H 5600 4900 70  0000 C CNN
+F 3 "" H 5600 4900 70  0000 C CNN
+	1    5600 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_185
+U 1 1 58023E7E
+P 6100 4900
+F 0 "GND_185" H 6100 4900 20  0000 C CNN
+F 1 "+GND" H 6100 4830 30  0000 C CNN
+F 2 "" H 6100 4900 70  0000 C CNN
+F 3 "" H 6100 4900 70  0000 C CNN
+	1    6100 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_186
+U 1 1 58023E7D
+P 3400 5800
+F 0 "GND_186" H 3400 5800 20  0000 C CNN
+F 1 "+GND" H 3400 5730 30  0000 C CNN
+F 2 "" H 3400 5800 70  0000 C CNN
+F 3 "" H 3400 5800 70  0000 C CNN
+	1    3400 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_187
+U 1 1 58023E7C
+P 3900 5800
+F 0 "GND_187" H 3900 5800 20  0000 C CNN
+F 1 "+GND" H 3900 5730 30  0000 C CNN
+F 2 "" H 3900 5800 70  0000 C CNN
+F 3 "" H 3900 5800 70  0000 C CNN
+	1    3900 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_188
+U 1 1 58023E7B
+P 4600 5800
+F 0 "GND_188" H 4600 5800 20  0000 C CNN
+F 1 "+GND" H 4600 5730 30  0000 C CNN
+F 2 "" H 4600 5800 70  0000 C CNN
+F 3 "" H 4600 5800 70  0000 C CNN
+	1    4600 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_189
+U 1 1 58023E7A
+P 5100 5800
+F 0 "GND_189" H 5100 5800 20  0000 C CNN
+F 1 "+GND" H 5100 5730 30  0000 C CNN
+F 2 "" H 5100 5800 70  0000 C CNN
+F 3 "" H 5100 5800 70  0000 C CNN
+	1    5100 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_190
+U 1 1 58023E79
+P 5600 5800
+F 0 "GND_190" H 5600 5800 20  0000 C CNN
+F 1 "+GND" H 5600 5730 30  0000 C CNN
+F 2 "" H 5600 5800 70  0000 C CNN
+F 3 "" H 5600 5800 70  0000 C CNN
+	1    5600 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_191
+U 1 1 58023E78
+P 6100 5800
+F 0 "GND_191" H 6100 5800 20  0000 C CNN
+F 1 "+GND" H 6100 5730 30  0000 C CNN
+F 2 "" H 6100 5800 70  0000 C CNN
+F 3 "" H 6100 5800 70  0000 C CNN
+	1    6100 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_192
+U 1 1 58023E77
+P 3400 6700
+F 0 "GND_192" H 3400 6700 20  0000 C CNN
+F 1 "+GND" H 3400 6630 30  0000 C CNN
+F 2 "" H 3400 6700 70  0000 C CNN
+F 3 "" H 3400 6700 70  0000 C CNN
+	1    3400 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_193
+U 1 1 58023E76
+P 3900 6700
+F 0 "GND_193" H 3900 6700 20  0000 C CNN
+F 1 "+GND" H 3900 6630 30  0000 C CNN
+F 2 "" H 3900 6700 70  0000 C CNN
+F 3 "" H 3900 6700 70  0000 C CNN
+	1    3900 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_194
+U 1 1 58023E75
+P 4600 6700
+F 0 "GND_194" H 4600 6700 20  0000 C CNN
+F 1 "+GND" H 4600 6630 30  0000 C CNN
+F 2 "" H 4600 6700 70  0000 C CNN
+F 3 "" H 4600 6700 70  0000 C CNN
+	1    4600 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_195
+U 1 1 58023E74
+P 5100 6700
+F 0 "GND_195" H 5100 6700 20  0000 C CNN
+F 1 "+GND" H 5100 6630 30  0000 C CNN
+F 2 "" H 5100 6700 70  0000 C CNN
+F 3 "" H 5100 6700 70  0000 C CNN
+	1    5100 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_196
+U 1 1 58023E73
+P 5600 6700
+F 0 "GND_196" H 5600 6700 20  0000 C CNN
+F 1 "+GND" H 5600 6630 30  0000 C CNN
+F 2 "" H 5600 6700 70  0000 C CNN
+F 3 "" H 5600 6700 70  0000 C CNN
+	1    5600 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_197
+U 1 1 58023E72
+P 6100 6700
+F 0 "GND_197" H 6100 6700 20  0000 C CNN
+F 1 "+GND" H 6100 6630 30  0000 C CNN
+F 2 "" H 6100 6700 70  0000 C CNN
+F 3 "" H 6100 6700 70  0000 C CNN
+	1    6100 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_198
+U 1 1 58023E71
+P 3400 7600
+F 0 "GND_198" H 3400 7600 20  0000 C CNN
+F 1 "+GND" H 3400 7530 30  0000 C CNN
+F 2 "" H 3400 7600 70  0000 C CNN
+F 3 "" H 3400 7600 70  0000 C CNN
+	1    3400 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_199
+U 1 1 58023E70
+P 3900 7600
+F 0 "GND_199" H 3900 7600 20  0000 C CNN
+F 1 "+GND" H 3900 7530 30  0000 C CNN
+F 2 "" H 3900 7600 70  0000 C CNN
+F 3 "" H 3900 7600 70  0000 C CNN
+	1    3900 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_200
+U 1 1 58023E6F
+P 4600 7600
+F 0 "GND_200" H 4600 7600 20  0000 C CNN
+F 1 "+GND" H 4600 7530 30  0000 C CNN
+F 2 "" H 4600 7600 70  0000 C CNN
+F 3 "" H 4600 7600 70  0000 C CNN
+	1    4600 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_201
+U 1 1 58023E6E
+P 5100 7600
+F 0 "GND_201" H 5100 7600 20  0000 C CNN
+F 1 "+GND" H 5100 7530 30  0000 C CNN
+F 2 "" H 5100 7600 70  0000 C CNN
+F 3 "" H 5100 7600 70  0000 C CNN
+	1    5100 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_202
+U 1 1 58023E6D
+P 5600 7600
+F 0 "GND_202" H 5600 7600 20  0000 C CNN
+F 1 "+GND" H 5600 7530 30  0000 C CNN
+F 2 "" H 5600 7600 70  0000 C CNN
+F 3 "" H 5600 7600 70  0000 C CNN
+	1    5600 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_203
+U 1 1 58023E6C
+P 6100 7600
+F 0 "GND_203" H 6100 7600 20  0000 C CNN
+F 1 "+GND" H 6100 7530 30  0000 C CNN
+F 2 "" H 6100 7600 70  0000 C CNN
+F 3 "" H 6100 7600 70  0000 C CNN
+	1    6100 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_204
+U 1 1 58023E6B
+P 3400 8500
+F 0 "GND_204" H 3400 8500 20  0000 C CNN
+F 1 "+GND" H 3400 8430 30  0000 C CNN
+F 2 "" H 3400 8500 70  0000 C CNN
+F 3 "" H 3400 8500 70  0000 C CNN
+	1    3400 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_205
+U 1 1 58023E6A
+P 3900 8500
+F 0 "GND_205" H 3900 8500 20  0000 C CNN
+F 1 "+GND" H 3900 8430 30  0000 C CNN
+F 2 "" H 3900 8500 70  0000 C CNN
+F 3 "" H 3900 8500 70  0000 C CNN
+	1    3900 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_206
+U 1 1 58023E69
+P 4600 8500
+F 0 "GND_206" H 4600 8500 20  0000 C CNN
+F 1 "+GND" H 4600 8430 30  0000 C CNN
+F 2 "" H 4600 8500 70  0000 C CNN
+F 3 "" H 4600 8500 70  0000 C CNN
+	1    4600 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_207
+U 1 1 58023E68
+P 5100 8500
+F 0 "GND_207" H 5100 8500 20  0000 C CNN
+F 1 "+GND" H 5100 8430 30  0000 C CNN
+F 2 "" H 5100 8500 70  0000 C CNN
+F 3 "" H 5100 8500 70  0000 C CNN
+	1    5100 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_208
+U 1 1 58023E67
+P 5600 8500
+F 0 "GND_208" H 5600 8500 20  0000 C CNN
+F 1 "+GND" H 5600 8430 30  0000 C CNN
+F 2 "" H 5600 8500 70  0000 C CNN
+F 3 "" H 5600 8500 70  0000 C CNN
+	1    5600 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_209
+U 1 1 58023E66
+P 6100 8500
+F 0 "GND_209" H 6100 8500 20  0000 C CNN
+F 1 "+GND" H 6100 8430 30  0000 C CNN
+F 2 "" H 6100 8500 70  0000 C CNN
+F 3 "" H 6100 8500 70  0000 C CNN
+	1    6100 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_210
+U 1 1 58023E65
+P 3400 9400
+F 0 "GND_210" H 3400 9400 20  0000 C CNN
+F 1 "+GND" H 3400 9330 30  0000 C CNN
+F 2 "" H 3400 9400 70  0000 C CNN
+F 3 "" H 3400 9400 70  0000 C CNN
+	1    3400 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_211
+U 1 1 58023E64
+P 3900 9400
+F 0 "GND_211" H 3900 9400 20  0000 C CNN
+F 1 "+GND" H 3900 9330 30  0000 C CNN
+F 2 "" H 3900 9400 70  0000 C CNN
+F 3 "" H 3900 9400 70  0000 C CNN
+	1    3900 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_212
+U 1 1 58023E63
+P 4600 9400
+F 0 "GND_212" H 4600 9400 20  0000 C CNN
+F 1 "+GND" H 4600 9330 30  0000 C CNN
+F 2 "" H 4600 9400 70  0000 C CNN
+F 3 "" H 4600 9400 70  0000 C CNN
+	1    4600 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_213
+U 1 1 58023E62
+P 5100 9400
+F 0 "GND_213" H 5100 9400 20  0000 C CNN
+F 1 "+GND" H 5100 9330 30  0000 C CNN
+F 2 "" H 5100 9400 70  0000 C CNN
+F 3 "" H 5100 9400 70  0000 C CNN
+	1    5100 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_214
+U 1 1 58023E61
+P 5600 9400
+F 0 "GND_214" H 5600 9400 20  0000 C CNN
+F 1 "+GND" H 5600 9330 30  0000 C CNN
+F 2 "" H 5600 9400 70  0000 C CNN
+F 3 "" H 5600 9400 70  0000 C CNN
+	1    5600 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_215
+U 1 1 58023E60
+P 6100 9400
+F 0 "GND_215" H 6100 9400 20  0000 C CNN
+F 1 "+GND" H 6100 9330 30  0000 C CNN
+F 2 "" H 6100 9400 70  0000 C CNN
+F 3 "" H 6100 9400 70  0000 C CNN
+	1    6100 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:VCCO_3V3 VCCO_3V3_39
+U 1 1 58023E5F
+P 600 4200
+F 0 "VCCO_3V3_39" H 600 4200 20  0000 C CNN
+F 1 "+VCCO_3V3" H 600 4130 30  0000 C CNN
+F 2 "" H 600 4200 70  0000 C CNN
+F 3 "" H 600 4200 70  0000 C CNN
+	1    600 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 4800 1000 4900
+Wire Wire Line
+	1500 4800 1500 4900
+Wire Wire Line
+	2000 4800 2000 4900
+Wire Wire Line
+	2500 4800 2500 4900
+Wire Wire Line
+	3400 4800 3400 4900
+Wire Wire Line
+	3900 4800 3900 4900
+Wire Wire Line
+	4600 4800 4600 4900
+Wire Wire Line
+	5100 4800 5100 4900
+Wire Wire Line
+	5600 4800 5600 4900
+Wire Wire Line
+	6100 4800 6100 4900
+Wire Wire Line
+	3400 5700 3400 5800
+Wire Wire Line
+	3900 5700 3900 5800
+Wire Wire Line
+	4600 5700 4600 5800
+Wire Wire Line
+	5100 5700 5100 5800
+Wire Wire Line
+	5600 5700 5600 5800
+Wire Wire Line
+	6100 5700 6100 5800
+Wire Wire Line
+	3400 6600 3400 6700
+Wire Wire Line
+	3900 6600 3900 6700
+Wire Wire Line
+	4600 6600 4600 6700
+Wire Wire Line
+	5100 6600 5100 6700
+Wire Wire Line
+	5600 6600 5600 6700
+Wire Wire Line
+	6100 6600 6100 6700
+Wire Wire Line
+	3400 7500 3400 7600
+Wire Wire Line
+	3900 7500 3900 7600
+Wire Wire Line
+	4600 7500 4600 7600
+Wire Wire Line
+	5100 7500 5100 7600
+Wire Wire Line
+	5600 7500 5600 7600
+Wire Wire Line
+	6100 7500 6100 7600
+Wire Wire Line
+	3400 8400 3400 8500
+Wire Wire Line
+	3900 8400 3900 8500
+Wire Wire Line
+	4600 8400 4600 8500
+Wire Wire Line
+	5100 8400 5100 8500
+Wire Wire Line
+	5600 8400 5600 8500
+Wire Wire Line
+	6100 8400 6100 8500
+Wire Wire Line
+	3400 9300 3400 9400
+Wire Wire Line
+	3900 9300 3900 9400
+Wire Wire Line
+	4600 9300 4600 9400
+Wire Wire Line
+	5100 9300 5100 9400
+Wire Wire Line
+	5600 9300 5600 9400
+Wire Wire Line
+	6100 9300 6100 9400
+Wire Wire Line
+	600 4200 600 4400
+Wire Wire Line
+	3400 6200 3400 6300
+Wire Wire Line
+	6100 6200 6100 6300
+Wire Wire Line
+	6100 6200 5600 6200
+Wire Wire Line
+	5600 6200 5100 6200
+Wire Wire Line
+	5100 6200 4600 6200
+Wire Wire Line
+	4600 6200 3900 6200
+Wire Wire Line
+	3900 6200 3400 6200
+Wire Wire Line
+	3900 6200 3900 6300
+Wire Wire Line
+	4600 6200 4600 6300
+Wire Wire Line
+	5100 6200 5100 6300
+Wire Wire Line
+	5600 6200 5600 6300
+Wire Wire Line
+	3400 6200 3000 6200
+Wire Wire Line
+	1000 4400 1000 4500
+Wire Wire Line
+	1500 4400 1500 4500
+Wire Wire Line
+	1500 4400 1000 4400
+Wire Wire Line
+	2500 4400 2500 4500
+Wire Wire Line
+	2500 4400 2000 4400
+Wire Wire Line
+	2000 4400 1500 4400
+Wire Wire Line
+	2000 4400 2000 4500
+Wire Wire Line
+	3400 4400 3400 4500
+Wire Wire Line
+	3400 4400 3000 4400
+Wire Wire Line
+	3000 4400 2500 4400
+Wire Wire Line
+	6100 4400 6100 4500
+Wire Wire Line
+	6100 4400 5600 4400
+Wire Wire Line
+	5600 4400 5100 4400
+Wire Wire Line
+	5100 4400 4600 4400
+Wire Wire Line
+	4600 4400 3900 4400
+Wire Wire Line
+	3900 4400 3400 4400
+Wire Wire Line
+	3900 4400 3900 4500
+Wire Wire Line
+	4600 4400 4600 4500
+Wire Wire Line
+	5100 4400 5100 4500
+Wire Wire Line
+	5600 4400 5600 4500
+Wire Wire Line
+	3000 4400 3000 5300
+Wire Wire Line
+	3400 5300 3400 5400
+Wire Wire Line
+	6100 5300 6100 5400
+Wire Wire Line
+	6100 5300 5600 5300
+Wire Wire Line
+	5600 5300 5100 5300
+Wire Wire Line
+	5100 5300 4600 5300
+Wire Wire Line
+	4600 5300 3900 5300
+Wire Wire Line
+	3900 5300 3400 5300
+Wire Wire Line
+	3900 5300 3900 5400
+Wire Wire Line
+	4600 5300 4600 5400
+Wire Wire Line
+	5100 5300 5100 5400
+Wire Wire Line
+	5600 5300 5600 5400
+Wire Wire Line
+	3400 5300 3000 5300
+Wire Wire Line
+	3000 5300 3000 6200
+Wire Wire Line
+	3400 7100 3400 7200
+Wire Wire Line
+	6100 7100 6100 7200
+Wire Wire Line
+	6100 7100 5600 7100
+Wire Wire Line
+	5600 7100 5100 7100
+Wire Wire Line
+	5100 7100 4600 7100
+Wire Wire Line
+	4600 7100 3900 7100
+Wire Wire Line
+	3900 7100 3400 7100
+Wire Wire Line
+	3900 7100 3900 7200
+Wire Wire Line
+	4600 7100 4600 7200
+Wire Wire Line
+	5100 7100 5100 7200
+Wire Wire Line
+	5600 7100 5600 7200
+Wire Wire Line
+	3400 7100 3000 7100
+Wire Wire Line
+	3000 6200 3000 7100
+Wire Wire Line
+	3400 8000 3400 8100
+Wire Wire Line
+	6100 8000 6100 8100
+Wire Wire Line
+	6100 8000 5600 8000
+Wire Wire Line
+	5600 8000 5100 8000
+Wire Wire Line
+	5100 8000 4600 8000
+Wire Wire Line
+	4600 8000 3900 8000
+Wire Wire Line
+	3900 8000 3400 8000
+Wire Wire Line
+	3900 8000 3900 8100
+Wire Wire Line
+	4600 8000 4600 8100
+Wire Wire Line
+	5100 8000 5100 8100
+Wire Wire Line
+	5600 8000 5600 8100
+Wire Wire Line
+	3400 8000 3000 8000
+Wire Wire Line
+	3000 7100 3000 8000
+Wire Wire Line
+	3400 8900 3400 9000
+Wire Wire Line
+	6100 8900 6100 9000
+Wire Wire Line
+	6100 8900 5600 8900
+Wire Wire Line
+	5600 8900 5100 8900
+Wire Wire Line
+	5100 8900 4600 8900
+Wire Wire Line
+	4600 8900 3900 8900
+Wire Wire Line
+	3900 8900 3400 8900
+Wire Wire Line
+	3900 8900 3900 9000
+Wire Wire Line
+	4600 8900 4600 9000
+Wire Wire Line
+	5100 8900 5100 9000
+Wire Wire Line
+	5600 8900 5600 9000
+Wire Wire Line
+	3400 8900 3000 8900
+Wire Wire Line
+	3000 8000 3000 8900
+Wire Wire Line
+	1000 4400 600 4400
+Connection ~ 3900 6200
+Connection ~ 4600 6200
+Connection ~ 5100 6200
+Connection ~ 5600 6200
+Connection ~ 3400 6200
+Connection ~ 1500 4400
+Connection ~ 2000 4400
+Connection ~ 2500 4400
+Connection ~ 3400 4400
+Connection ~ 3900 4400
+Connection ~ 4600 4400
+Connection ~ 5100 4400
+Connection ~ 5600 4400
+Connection ~ 3000 4400
+Connection ~ 3900 5300
+Connection ~ 4600 5300
+Connection ~ 5100 5300
+Connection ~ 5600 5300
+Connection ~ 3400 5300
+Connection ~ 3000 5300
+Connection ~ 3900 7100
+Connection ~ 4600 7100
+Connection ~ 5100 7100
+Connection ~ 5600 7100
+Connection ~ 3400 7100
+Connection ~ 3000 6200
+Connection ~ 3900 8000
+Connection ~ 4600 8000
+Connection ~ 5100 8000
+Connection ~ 5600 8000
+Connection ~ 3400 8000
+Connection ~ 3000 7100
+Connection ~ 3900 8900
+Connection ~ 4600 8900
+Connection ~ 5100 8900
+Connection ~ 5600 8900
+Connection ~ 3400 8900
+Connection ~ 3000 8000
+Connection ~ 1000 4400
+$Comp
+L Cryptech_Alpha:C-EUC0402 C181
+U 1 1 58023E5E
+P 4600 4600
+F 0 "C181" H 4680 4410 60  0000 L BNN
+	1    4600 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C189
+U 1 1 58023E5D
+P 5100 6400
+F 0 "C189" H 5180 6210 60  0000 L BNN
+	1    5100 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 6210 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C195
+U 1 1 58023E5C
+P 5600 6400
+F 0 "C195" H 5680 6210 60  0000 L BNN
+	1    5600 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 6210 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C201
+U 1 1 58023E5B
+P 6100 6400
+F 0 "C201" H 6180 6210 60  0000 L BNN
+	1    6100 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 6210 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C184
+U 1 1 58023E5A
+P 4600 7300
+F 0 "C184" H 4680 7110 60  0000 L BNN
+	1    4600 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C190
+U 1 1 58023E59
+P 5100 7300
+F 0 "C190" H 5180 7110 60  0000 L BNN
+	1    5100 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C196
+U 1 1 58023E58
+P 5600 7300
+F 0 "C196" H 5680 7110 60  0000 L BNN
+	1    5600 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C202
+U 1 1 58023E57
+P 6100 7300
+F 0 "C202" H 6180 7110 60  0000 L BNN
+	1    6100 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C185
+U 1 1 58023E56
+P 4600 8200
+F 0 "C185" H 4680 8010 60  0000 L BNN
+	1    4600 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C191
+U 1 1 58023E55
+P 5100 8200
+F 0 "C191" H 5180 8010 60  0000 L BNN
+	1    5100 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C197
+U 1 1 58023E54
+P 5600 8200
+F 0 "C197" H 5680 8010 60  0000 L BNN
+	1    5600 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C187
+U 1 1 58023E53
+P 5100 4600
+F 0 "C187" H 5180 4410 60  0000 L BNN
+	1    5100 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C203
+U 1 1 58023E52
+P 6100 8200
+F 0 "C203" H 6180 8010 60  0000 L BNN
+	1    6100 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C186
+U 1 1 58023E51
+P 4600 9100
+F 0 "C186" H 4680 8910 60  0000 L BNN
+	1    4600 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C192
+U 1 1 58023E50
+P 5100 9100
+F 0 "C192" H 5180 8910 60  0000 L BNN
+	1    5100 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C198
+U 1 1 58023E4F
+P 5600 9100
+F 0 "C198" H 5680 8910 60  0000 L BNN
+	1    5600 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C204
+U 1 1 58023E4E
+P 6100 9100
+F 0 "C204" H 6180 8910 60  0000 L BNN
+	1    6100 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C169
+U 1 1 58023E4D
+P 3400 4600
+F 0 "C169" H 3480 4410 60  0000 L BNN
+	1    3400 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C175
+U 1 1 58023E4C
+P 3900 4600
+F 0 "C175" H 3980 4410 60  0000 L BNN
+	1    3900 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C176
+U 1 1 58023E4B
+P 3900 5500
+F 0 "C176" H 3980 5310 60  0000 L BNN
+	1    3900 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C170
+U 1 1 58023E4A
+P 3400 5500
+F 0 "C170" H 3480 5310 60  0000 L BNN
+	1    3400 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C171
+U 1 1 58023E49
+P 3400 6400
+F 0 "C171" H 3480 6210 60  0000 L BNN
+	1    3400 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 6210 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C193
+U 1 1 58023E48
+P 5600 4600
+F 0 "C193" H 5680 4410 60  0000 L BNN
+	1    5600 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C177
+U 1 1 58023E47
+P 3900 6400
+F 0 "C177" H 3980 6210 60  0000 L BNN
+	1    3900 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 6210 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C178
+U 1 1 58023E46
+P 3900 7300
+F 0 "C178" H 3980 7110 60  0000 L BNN
+	1    3900 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C172
+U 1 1 58023E45
+P 3400 7300
+F 0 "C172" H 3480 7110 60  0000 L BNN
+	1    3400 7300
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 7110 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C173
+U 1 1 58023E44
+P 3400 8200
+F 0 "C173" H 3480 8010 60  0000 L BNN
+	1    3400 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C179
+U 1 1 58023E43
+P 3900 8200
+F 0 "C179" H 3980 8010 60  0000 L BNN
+	1    3900 8200
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 8010 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C180
+U 1 1 58023E42
+P 3900 9100
+F 0 "C180" H 3980 8910 60  0000 L BNN
+	1    3900 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3980 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0603 C174
+U 1 1 58023E41
+P 3400 9100
+F 0 "C174" H 3480 8910 60  0000 L BNN
+	1    3400 9100
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0805" H 3480 8910 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC1210 C165
+U 1 1 58023E40
+P 1000 4600
+F 0 "C165" H 1080 4410 60  0000 L BNN
+	1    1000 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_1210" H 1080 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC1210 C166
+U 1 1 58023E3F
+P 1500 4600
+F 0 "C166" H 1580 4410 60  0000 L BNN
+	1    1500 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_1210" H 1580 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC1210 C167
+U 1 1 58023E3E
+P 2000 4600
+F 0 "C167" H 2080 4410 60  0000 L BNN
+	1    2000 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_1210" H 2080 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C199
+U 1 1 58023E3D
+P 6100 4600
+F 0 "C199" H 6180 4410 60  0000 L BNN
+	1    6100 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC1210 C168
+U 1 1 58023E3C
+P 2500 4600
+F 0 "C168" H 2580 4410 60  0000 L BNN
+	1    2500 4600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_1210" H 2580 4410 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C182
+U 1 1 58023E3B
+P 4600 5500
+F 0 "C182" H 4680 5310 60  0000 L BNN
+	1    4600 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C188
+U 1 1 58023E3A
+P 5100 5500
+F 0 "C188" H 5180 5310 60  0000 L BNN
+	1    5100 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5180 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C194
+U 1 1 58023E39
+P 5600 5500
+F 0 "C194" H 5680 5310 60  0000 L BNN
+	1    5600 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 5680 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C200
+U 1 1 58023E38
+P 6100 5500
+F 0 "C200" H 6180 5310 60  0000 L BNN
+	1    6100 5500
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 6180 5310 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C183
+U 1 1 58023E37
+P 4600 6400
+F 0 "C183" H 4680 6210 60  0000 L BNN
+	1    4600 6400
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 4680 6210 60  0001 C CNN
+$EndComp
+$EndSCHEMATC

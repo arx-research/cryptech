@@ -1,0 +1,430 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr B 17000 11000
+encoding utf-8
+Sheet 14 27
+Title "rev02_12"
+Date "15 10 2016"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 12700 5600 0    42   ~ 12
+CS pull-up to disable MKM by\ndefault (allows programming\nof AVR)
+Text Notes 11400 3800 0    84   ~ 12
+Master Key Memory
+Text Notes 3400 2700 0    84   ~ 12
+SPI mux controlling access to the MKM.\nNormally, the FPGA has R/W access to the MKM but on a\ntamper event the tamper detect MCU (AVR) will grab access\nto the MKM and erase the contents.
+Text Notes 7800 6100 0    42   ~ 12
+Make AVR unable to read the\nMKM by installing this jumper
+Text Notes 3900 5900 0    42   ~ 12
+AVR access default\ndisabled through pull-up
+Text Notes 3800 7000 0    42   ~ 12
+FPGA access default\nenabled through pull-down
+Text Notes 13630 10230 0    84   ~ 12
+Master Key Memory
+Text Notes 11890 4940 0    60   ~ 12
+U12
+Text Notes 11760 6540 0    60   ~ 12
+23K640-I_SN
+Text Notes 7500 6200 1    60   ~ 12
+JP6
+Text Notes 7770 6200 1    60   ~ 12
+JP1Q
+Text Notes 5120 4720 0    60   ~ 12
+R80
+Text Notes 5270 7070 2    60   ~ 12
+R81
+Text Notes 5500 5080 0    60   ~ 12
+IC4
+Text Notes 5500 5900 0    60   ~ 12
+74*244DW
+$Comp
+L power:GND GND_87
+U 1 1 58023F8C
+P 11300 6500
+F 0 "GND_87" H 11300 6500 20  0000 C CNN
+F 1 "+GND" H 11300 6430 30  0000 C CNN
+F 2 "" H 11300 6500 70  0000 C CNN
+F 3 "" H 11300 6500 70  0000 C CNN
+	1    11300 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:3V3_BATT 3V3_BATT_8
+U 1 1 58023F8B
+P 11300 4200
+F 0 "3V3_BATT_8" H 11300 4200 20  0000 C CNN
+F 1 "+3V3_BATT" H 11300 4130 30  0000 C CNN
+F 2 "" H 11300 4200 70  0000 C CNN
+F 3 "" H 11300 4200 70  0000 C CNN
+	1    11300 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:3V3_BATT 3V3_BATT_9
+U 1 1 58023F8A
+P 3300 4100
+F 0 "3V3_BATT_9" H 3300 4100 20  0000 C CNN
+F 1 "+3V3_BATT" H 3300 4030 30  0000 C CNN
+F 2 "" H 3300 4100 70  0000 C CNN
+F 3 "" H 3300 4100 70  0000 C CNN
+	1    3300 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:3V3_BATT 3V3_BATT_10
+U 1 1 58023F89
+P 10800 4200
+F 0 "3V3_BATT_10" H 10800 4200 20  0000 C CNN
+F 1 "+3V3_BATT" H 10800 4130 30  0000 C CNN
+F 2 "" H 10800 4200 70  0000 C CNN
+F 3 "" H 10800 4200 70  0000 C CNN
+	1    10800 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_88
+U 1 1 58023F88
+P 11500 4700
+F 0 "GND_88" H 11500 4700 20  0000 C CNN
+F 1 "+GND" H 11500 4630 30  0000 C CNN
+F 2 "" H 11500 4700 70  0000 C CNN
+F 3 "" H 11500 4700 70  0000 C CNN
+	1    11500 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_89
+U 1 1 58023F87
+P 7600 6400
+F 0 "GND_89" H 7600 6400 20  0000 C CNN
+F 1 "+GND" H 7600 6330 30  0000 C CNN
+F 2 "" H 7600 6400 70  0000 C CNN
+F 3 "" H 7600 6400 70  0000 C CNN
+	1    7600 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_90
+U 1 1 58023F86
+P 3300 5200
+F 0 "GND_90" H 3300 5200 20  0000 C CNN
+F 1 "+GND" H 3300 5130 30  0000 C CNN
+F 2 "" H 3300 5200 70  0000 C CNN
+F 3 "" H 3300 5200 70  0000 C CNN
+	1    3300 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND GND_91
+U 1 1 58023F85
+P 5000 7500
+F 0 "GND_91" H 5000 7500 20  0000 C CNN
+F 1 "+GND" H 5000 7430 30  0000 C CNN
+F 2 "" H 5000 7500 70  0000 C CNN
+F 3 "" H 5000 7500 70  0000 C CNN
+	1    5000 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:3V3_BATT 3V3_BATT_11
+U 1 1 58023F84
+P 5000 4100
+F 0 "3V3_BATT_11" H 5000 4100 20  0000 C CNN
+F 1 "+3V3_BATT" H 5000 4030 30  0000 C CNN
+F 2 "" H 5000 4100 70  0000 C CNN
+F 3 "" H 5000 4100 70  0000 C CNN
+	1    5000 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Cryptech_Alpha:3V3_BATT 3V3_BATT_12
+U 1 1 58023F83
+P 10100 4220
+F 0 "3V3_BATT_12" H 10100 4220 20  0000 C CNN
+F 1 "+3V3_BATT" H 10100 4150 30  0000 C CNN
+F 2 "" H 10100 4220 70  0000 C CNN
+F 3 "" H 10100 4220 70  0000 C CNN
+	1    10100 4220
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11300 6100 11300 6500
+Wire Wire Line
+	11400 6100 11300 6100
+Wire Wire Line
+	11500 4600 11500 4700
+Wire Wire Line
+	7600 6300 7600 6400
+Wire Wire Line
+	3300 5100 3300 5200
+Wire Wire Line
+	3300 5000 3300 5100
+Wire Wire Line
+	2900 4900 2900 5100
+Wire Wire Line
+	3300 5100 2900 5100
+Wire Wire Line
+	5000 7400 5000 7500
+Wire Wire Line
+	11400 5700 10800 5700
+Wire Wire Line
+	10800 5000 10800 5700
+Wire Wire Line
+	11400 5600 10100 5600
+Text Label 10100 5600 0 48 ~
+MKM_SCK
+Wire Wire Line
+	6500 5300 6300 5300
+Wire Wire Line
+	6500 5300 6500 6400
+Wire Wire Line
+	6500 6400 6300 6400
+Wire Wire Line
+	7000 5300 6500 5300
+Text Label 7000 5300 0 48 ~
+MKM_SCK
+Wire Wire Line
+	11400 5500 10100 5500
+Text Label 10100 5500 0 48 ~
+MKM_MOSI
+Wire Wire Line
+	6600 6500 6300 6500
+Wire Wire Line
+	6600 5400 6600 6500
+Wire Wire Line
+	6600 5400 6300 5400
+Wire Wire Line
+	7000 5400 6600 5400
+Text Label 7000 5400 0 48 ~
+MKM_MOSI
+Wire Wire Line
+	11400 5400 10500 5400
+Text Label 10140 5400 0 48 ~
+MKM_CS_N
+Wire Wire Line
+	6400 6300 6300 6300
+Wire Wire Line
+	6400 5200 6400 6300
+Wire Wire Line
+	6400 5200 6300 5200
+Wire Wire Line
+	7000 5200 6400 5200
+Text Label 7000 5200 0 48 ~
+MKM_CS_N
+Wire Wire Line
+	13150 5200 12800 5200
+Text Label 13150 5200 2 48 ~ 0
+MKM_MISO
+Wire Wire Line
+	5300 6600 5200 6600
+Wire Wire Line
+	5200 5500 5200 6600
+Wire Wire Line
+	5300 5500 5200 5500
+Wire Wire Line
+	5200 5500 4800 5500
+Text Label 4800 5500 0 48 ~
+MKM_MISO
+Wire Wire Line
+	11400 5200 11300 5200
+Wire Wire Line
+	11300 4300 11300 5200
+Wire Wire Line
+	11300 4200 11300 4300
+Wire Wire Line
+	11500 4300 11300 4300
+Wire Wire Line
+	3300 4100 3300 4300
+Wire Wire Line
+	3300 4300 2900 4300
+Wire Wire Line
+	2900 4300 2900 4600
+Wire Wire Line
+	3300 4300 3300 4400
+Wire Wire Line
+	10800 4200 10800 4600
+Wire Wire Line
+	5000 4100 5000 4600
+Wire Wire Line
+	10100 4220 10100 4620
+Wire Wire Line
+	5000 5700 4550 5700
+Wire Wire Line
+	5300 5700 5000 5700
+Wire Wire Line
+	5000 5000 5000 5700
+Text GLabel 4550 5700 0 48 Input ~ 0
+MKM_CONTROL_AVR_ENA
+Wire Wire Line
+	5300 5300 4800 5300
+Text GLabel 4800 5300 0 48 Input ~ 0
+MKM_AVR_SCK
+Wire Wire Line
+	5300 6300 4610 6300
+Text GLabel 4610 6300 0 48 Input ~ 0
+MKM_FPGA_CS_N
+Wire Wire Line
+	5300 5200 4800 5200
+Text GLabel 4800 5200 0 48 Input ~ 0
+MKM_AVR_CS_N
+Wire Wire Line
+	5300 6500 4610 6500
+Text GLabel 4610 6500 0 48 Input ~ 0
+MKM_FPGA_MOSI
+Wire Wire Line
+	5300 5400 4800 5400
+Text GLabel 4800 5400 0 48 Input ~ 0
+MKM_AVR_MOSI
+Wire Wire Line
+	6500 6600 6300 6600
+Text GLabel 6500 6600 2 48 Output ~ 0
+MKM_FPGA_MISO
+Wire Wire Line
+	7600 5500 6300 5500
+Wire Wire Line
+	7800 5500 7600 5500
+Wire Wire Line
+	7600 5500 7600 5700
+Text GLabel 7800 5500 2 48 Output ~ 0
+MKM_AVR_MISO
+Wire Wire Line
+	5300 6400 4610 6400
+Text GLabel 4610 6400 0 48 Input ~ 0
+MKM_FPGA_SCK
+Wire Wire Line
+	5300 6800 5000 6800
+Wire Wire Line
+	5000 6800 5000 7000
+Wire Wire Line
+	5000 6800 4480 6800
+Text GLabel 4480 6800 0 48 Input ~ 0
+MKM_CONTROL_FPGA_DIS
+Wire Wire Line
+	10100 5400 10100 5020
+Wire Wire Line
+	10500 5400 10100 5400
+$Comp
+L Cryptech_Alpha:23K640-I_SN U12
+U 1 1 58023F82
+P 12100 5600
+F 0 "U12" H 11570 4670 60  0000 L BNN
+	1    12100 5600
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:SOIC127P600X175-8N" H 11570 4670 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:74*244DW_2 IC4_2
+U 1 1 58023F81
+P 5800 6500
+F 0 "IC4_2" H 5470 5970 60  0000 L BNN
+F 1 "MC74AC244DW*" H 5510 6920 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:SO20W" H 5510 6920 60  0001 C CNN
+F 3 "" H 5510 6920 60  0000 C CNN
+	1    5800 6500
+	1    0    0    -1
+$EndComp
+$Comp
+L Cryptech_Alpha:74*244DW_3 IC4_3
+U 1 1 58023F80
+P 3300 4700
+F 0 "IC4_3" H 3330 4550 60  0000 L BNN
+F 1 "MC74AC244DW*" H 3480 4680 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:SO20W" H 3480 4680 60  0001 C CNN
+F 3 "" H 3480 4680 60  0000 C CNN
+	1    3300 4700
+	1    0    0    -1
+$EndComp
+$Comp
+L Cryptech_Alpha:R-EU_R0402 R33
+U 1 1 58023F7F
+P 10800 4800
+F 0 "R33" V 10741 4550 60  0000 L BNN
+F 1 "4.7k" V 10830 4540 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:R_0402" H 10830 4540 60  0001 C CNN
+F 3 "" H 10830 4540 60  0000 C CNN
+	1    10800 4800
+	0    1    1    0
+$EndComp
+$Comp
+L Cryptech_Alpha:R-EU_R0402 R34
+U 1 1 58023F7E
+P 10100 4820
+F 0 "R34" V 10171 5167 60  0000 R TNN
+F 1 "4.7k" V 10080 5180 60  0000 R TNN
+F 2 "Cryptech_Alpha_Footprints:R_0402" H 10080 5180 60  0001 C CNN
+F 3 "" H 10080 5180 60  0000 C CNN
+	1    10100 4820
+	0    -1   -1   0
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C106
+U 1 1 58023F7D
+P 2900 4700
+F 0 "C106" H 2500 4600 60  0000 L BNN
+F 1 "0.1uF" H 2490 4500 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 2490 4500 60  0001 C CNN
+F 3 "" H 2490 4500 60  0000 C CNN
+	1    2900 4700
+	1    0    0    -1
+$EndComp
+$Comp
+L Cryptech_Alpha:C-EUC0402 C107
+U 1 1 58023F7C
+P 11500 4400
+F 0 "C107" H 11600 4500 60  0000 L BNN
+F 1 "0.1uF" H 11600 4400 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:C_0402" H 11600 4400 60  0001 C CNN
+F 3 "" H 11600 4400 60  0000 C CNN
+	1    11500 4400
+	1    0    0    -1
+$EndComp
+$Comp
+L Cryptech_Alpha:JP1Q JP6
+U 1 1 58023F7B
+P 7600 6000
+F 0 "JP6" H 7705 6030 60  0000 L BNN
+	1    7600 6000
+	1    0    0    -1
+F 2 "Cryptech_Alpha_Footprints:PLS-2" H 7705 6030 60  0001 C CNN
+$EndComp
+$Comp
+L Cryptech_Alpha:R-EU_R0402 R80
+U 1 1 58023F7A
+P 5000 4800
+F 0 "R80" V 4910 4755 60  0000 R TNN
+F 1 "4.7k" V 4990 4690 60  0000 R TNN
+F 2 "Cryptech_Alpha_Footprints:R_0402" H 4990 4690 60  0001 C CNN
+F 3 "" H 4990 4690 60  0000 C CNN
+	1    5000 4800
+	0    -1   -1   0
+$EndComp
+$Comp
+L Cryptech_Alpha:R-EU_R0402 R81
+U 1 1 58023F79
+P 5000 7200
+F 0 "R81" V 5090 7245 60  0000 L BNN
+F 1 "4.7k" V 5060 7310 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:R_0402" H 5060 7310 60  0001 C CNN
+F 3 "" H 5060 7310 60  0000 C CNN
+	1    5000 7200
+	0    1    1    0
+$EndComp
+$Comp
+L Cryptech_Alpha:74*244DW_1 IC4
+U 1 1 58023F78
+P 5800 5400
+F 0 "IC4" H 5470 4870 60  0000 L BNN
+F 1 "MC74AC244DW*" H 5500 5820 60  0000 L BNN
+F 2 "Cryptech_Alpha_Footprints:SO20W" H 5500 5820 60  0001 C CNN
+F 3 "" H 5500 5820 60  0000 C CNN
+	1    5800 5400
+	1    0    0    -1
+$EndComp
+NoConn ~ 11400 5900
+$EndSCHEMATC

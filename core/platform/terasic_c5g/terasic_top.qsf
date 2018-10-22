@@ -1,0 +1,101 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus II License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+# Date created = 16:43:44  February 25, 2015
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		terasic_top_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CGXFC5C6F27C7
+set_global_assignment -name TOP_LEVEL_ENTITY terasic_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 14.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:43:44  FEBRUARY 25, 2015"
+set_global_assignment -name LAST_QUARTUS_VERSION 14.1.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_location_assignment PIN_R20 -to clk
+set_location_assignment PIN_P11 -to reset_n
+set_location_assignment PIN_M9 -to rxd
+set_location_assignment PIN_L9 -to txd
+set_location_assignment PIN_L7 -to debug[0]
+set_location_assignment PIN_K6 -to debug[1]
+set_location_assignment PIN_D8 -to debug[2]
+set_location_assignment PIN_E9 -to debug[3]
+set_location_assignment PIN_A5 -to debug[4]
+set_location_assignment PIN_B6 -to debug[5]
+set_location_assignment PIN_H8 -to debug[6]
+set_location_assignment PIN_H9 -to debug[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_instance_assignment -name IO_STANDARD "1.2 V" -to reset_n
+set_instance_assignment -name IO_STANDARD "2.5 V" -to txd
+set_instance_assignment -name IO_STANDARD "2.5 V" -to rxd
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to debug[7]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE ../../hash/sha512/src/rtl/sha512_w_mem.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha512/src/rtl/sha512_k_constants.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha512/src/rtl/sha512_h_constants.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha512/src/rtl/sha512_core.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha512/src/rtl/sha512.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha256/src/rtl/sha256_w_mem.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha256/src/rtl/sha256_k_constants.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha256/src/rtl/sha256_core.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha256/src/rtl/sha256.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha1/src/rtl/sha1_w_mem.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha1/src/rtl/sha1_core.v
+set_global_assignment -name VERILOG_FILE ../../hash/sha1/src/rtl/sha1.v
+set_global_assignment -name VERILOG_FILE ../../comm/coretest/src/rtl/coretest.v
+set_global_assignment -name VERILOG_FILE ../../comm/uart/src/rtl/uart_core.v
+set_global_assignment -name VERILOG_FILE ../../comm/uart/src/rtl/uart_regs.v
+set_global_assignment -name VERILOG_FILE ../common/core_selector/src/rtl/rng_selector.v
+set_global_assignment -name VERILOG_FILE ../common/core_selector/src/rtl/hash_selector.v
+set_global_assignment -name VERILOG_FILE ../common/core_selector/src/rtl/cipher_selector.v
+set_global_assignment -name VERILOG_FILE ../common/core_selector/src/rtl/global_selector.v
+set_global_assignment -name VERILOG_FILE ../common/core_selector/src/rtl/core_selector.v
+set_global_assignment -name VERILOG_FILE terasic_regs.v
+set_global_assignment -name VERILOG_FILE terasic_top.v
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

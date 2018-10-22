@@ -1,0 +1,4 @@
+build
+libsqlite3.a
+sqlite3
+sqlite3.h

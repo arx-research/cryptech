@@ -1,0 +1,3 @@
+*.o
+/x25519_fpga_model
+/ed25519_fpga_model

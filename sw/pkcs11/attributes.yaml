@@ -1,0 +1,644 @@
+########################################################################
+#
+# PKCS #11 attribute definitions.
+#
+# The architecture of PKCS #11 is heavily based on an n-level-deep
+# object inheritance hierarcy.  Concrete object types inherit
+# attribute definitions, default values, usage constraints etc from
+# abstract types.  Fine if one happens to be writing in a language
+# that supports this, but C doesn't, and C++ is an abomination.
+#
+# So we handle all this inheritance-related fun here, by specifying
+# object types and attributes in a (relatively) readable way and using
+# a Python script to translate from this into "descriptors" (read-only
+# C tables) we can use to automate some of the most tedious attribute
+# checking in the C code.
+#
+# A secondary goal is to provide enough of a machine-readable
+# description of the PKCS #11 object hierarchy that we can use it to
+# drive automated test scripts, but that's not implemented yet.
+#
+# The base language here is YAML, with a somewhat ad-hoc data layout
+# on top of it.  The exact semantics are a bit of a moving target, but
+# the overall layout is:
+#
+# - The top-level data object is a YAML sequence (indicated in YAML by
+#   the leading "- " marker, converts to Python list).
+#
+# - Each entry in the sequence describes one object, represented as a
+#   YAML mapping (converts to Python dict).  Each object description
+#   has at least one required field ("name"), several optional fields,
+#   and one or more attribute descriptions.
+#
+# - An attribute description is a YAML mapping (Python dict)
+#   containing one or more fields describing the attribute.
+#
+# So the overall structure is a sequence of maps of maps.
+#
+# Attribute definitions within the hierarchy are combined, so that,
+# eg, the "rsa_public_key" type inherits the CKA_CLASS definition from
+# the the root object type, the CKA_KEY_TYPE definition from the "key"
+# type, a value of CKO_PUBLIC_KEY for the CKA_CLASS from the
+# "public_key" type, and provides its own value of CKK_RSA for the
+# CKA_KEY_TYPE.
+#
+# No doubt the error checking in the Python script could become much
+# more rigorous than it is now.
+#
+########################################################################
+#
+# Currently-defined object fields:
+#
+# - "name": String, required.  Name of this object class.  For
+#   concrete object types, this controls the name of the corresponding
+#   C descriptor.
+#
+# - "concrete": Boolean, optional, default false.  If true, this
+#   object type should generate a C descriptor.
+#
+# - "superclass": String, optional but present for all but one type.
+#   Contains name of parent type.
+#
+# New object fields may be defined at a later date as needed.
+#
+# Any entry in an object mapping whose key starts with "CKA_" is
+# assumed to be an attribute description.
+#
+# Keys in an object mapping which do not start with CKA_ and are not
+# known object fields should result in an error during parsing.
+#
+########################################################################
+#
+# Currently-defined attribute fields:
+#
+# - "type": a PKCS #11 type name (CK_*) or one of a few other types
+#   described in the PKCS #11 specification: "rfc2279string",
+#   "biginteger", or "bytearray".
+#
+# - "default": data-value (see below) to be used as default if neither
+#    the application template nor the PKCS #11 software itself
+#    supplies an explicit value.  As a special case, the null string
+#    ("") means that the default value of the attribute is empty (this
+#    is allowed for a few rfc2279string attributes such as CKA_LABEL).
+#
+# - "value": data-value (see below) for this field.  If the
+#   application specifies a value for this attribute, it must match;
+#   otherwise, behaves like default.  The special handling of the null
+#   string ("") used with default does not apply here.
+#
+# - "footnotes": Sequence (Python list) of integers in the range 1-12.
+#   If present, this indicates that the attribute's definition in the
+#   PKCS #11 specification has been tagged with the listed footnote
+#   numbers from the "common footnotes" in "Table 15" of the
+#   specification.  These footnotes specify various constraints on the
+#   attributes behavior, and the Python script translates them into
+#   flags with more meaningful names, but since the specification
+#   itself is written in terms of these silly footnote numbers, using
+#   the footnote numbers in the YAML makes it easier to check the
+#   attribute descriptions in the YAML against the specification.
+#
+# - "unimplemented": boolean, default false.  If true, the attribute
+#   is known to be in the specification but is not (yet?) supported by
+#   the Python script and the C code.  This flag is set on a small
+#   number of relatively obscure attributes whose internal structure
+#   makes them tedious to represent in the attribute database; this is
+#   a placeholder for attributes which should be implemented
+#   eventually but which were not deemed to be on the critical path.
+#
+# As with object mappings, attribute mappings with unrecognized keys
+# should result in an error during parsing.
+#
+# "data-value" fields ("default" and "value") in an attribute can take
+# one of several forms:
+#
+# - A string value naming a PKCS #11 constant (eg, CK_TRUE);
+#
+# - A sequence of eight bit unsigned numeric values (ie, bytes)
+#   specifying a literal value; or
+#
+# - An integer (Python long) specifying a numeric value for a
+#   biginteger field, to be converted into a literal value using the
+#   smallest possible number of bytes.
+#
+########################################################################
+#
+# Author: Rob Austein
+# Copyright (c) 2015, NORDUnet A/S
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+# - Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+#
+# - Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+# - Neither the name of the NORDUnet nor the names of its contributors may
+#   be used to endorse or promote products derived from this software
+#   without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+########################################################################
+
+###
+# Root of the object tree
+###
+
+- name: object
+
+  CKA_CLASS:
+    footnotes: [1]
+    type: CK_OBJECT_CLASS
+
+###
+# Storage objects
+###
+
+- name: storage
+  superclass: object
+
+  CKA_TOKEN:
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_PRIVATE:
+    type: CK_BBOOL
+    default: CK_TRUE
+
+  CKA_MODIFIABLE:
+    type: CK_BBOOL
+    default: CK_TRUE
+
+  CKA_LABEL:
+    type: rfc2279string
+    default: ""
+
+###
+# Data objects
+###
+
+- name: data
+  superclass: storage
+
+  CKA_CLASS:
+    value: CKO_DATA
+
+  CKA_APPLICATION:
+    type: rfc2279string
+    default: ""
+
+  CKA_OBJECT_ID:
+    type: bytearray
+    default: ""
+
+  CKA_VALUE:
+    type: bytearray
+    default: ""
+
+###
+# Certificate objects
+###
+
+- name: certificate
+  superclass: storage
+
+  CKA_CLASS:
+    value: CKO_CERTIFICATE
+
+  CKA_CERTIFICATE_TYPE:
+    footnotes: [1]
+    type: CK_CERTIFICATE_TYPE
+
+  CKA_TRUSTED:
+    footnotes: [10]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_CERTIFICATE_CATEGORY:
+    type: CK_ULONG
+    default: 0
+
+  CKA_CHECK_VALUE:
+    type: bytearray
+
+  CKA_START_DATE:
+    type: CK_DATE
+    default: ""
+
+  CKA_END_DATE:
+    type: CK_DATE
+    default: ""
+
+###
+# X.509 public key certificate objects
+###
+
+# NB: For some reason, numeric footnotes in the table describing X.509
+#     certificate attributes are NOT the common attribute footnotes
+#     from Table 15.  Be careful!
+
+- name: x509_public_key_certificate
+  superclass: certificate
+
+  CKA_SUBJECT:
+    type: bytearray
+
+  CKA_ID:
+    type: bytearray
+    default: ""
+
+  CKA_ISSUER:
+    type: bytearray
+    default: ""
+
+  CKA_SERIAL_NUMBER:
+    type: bytearray
+    default: ""
+
+  CKA_VALUE:
+    type: bytearray
+
+  CKA_URL:
+    type: rfc2279string
+    default: ""
+
+  CKA_HASH_OF_SUBJECT_PUBLIC_KEY:
+    type: bytearray
+    default: ""
+
+  CKA_HASH_OF_ISSUER_PUBLIC_KEY:
+    type: bytearray
+    default: ""
+
+  CKA_JAVA_MIDP_SECURITY_DOMAIN:
+    type: CK_ULONG
+    default: 0
+
+###
+# Key objects
+###
+
+- name: key
+  superclass: storage
+
+  CKA_KEY_TYPE:
+    footnotes: [1, 5]
+    type: CK_KEY_TYPE
+
+  CKA_ID:
+    footnotes: [8]
+    type: bytearray
+    default: ""
+
+  CKA_START_DATE:
+    footnotes: [8]
+    type: CK_DATE
+    default: ""
+
+  CKA_END_DATE:
+    footnotes: [8]
+    type: CK_DATE
+    default: ""
+
+  CKA_DERIVE:
+    footnotes: [8]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_LOCAL:
+    footnotes: [2, 4, 6]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_KEY_GEN_MECHANISM:
+    footnotes: [2, 4, 6]
+    type: CK_MECHANISM_TYPE
+    default: CK_UNAVAILABLE_INFORMATION
+
+  CKA_ALLOWED_MECHANISMS:
+    unimplemented: true
+
+###
+# Public key objects
+###
+
+- name: public_key
+  superclass: key
+
+  CKA_CLASS:
+    value: CKO_PUBLIC_KEY
+
+  CKA_SUBJECT:
+    footnotes: [8]
+    type: bytearray
+    default: ""
+
+  CKA_ENCRYPT:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_VERIFY:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_VERIFY_RECOVER:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_WRAP:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_TRUSTED:
+    footnotes: [10]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_WRAP_TEMPLATE:
+    unimplemented: true
+
+###
+# Private key objects
+###
+
+- name: private_key
+  superclass: key
+
+  CKA_CLASS:
+    value: CKO_PRIVATE_KEY
+
+  CKA_SUBJECT:
+    footnotes: [8]
+    type: bytearray
+    default: ""
+
+  CKA_SENSITIVE:
+    footnotes: [8, 9, 11]
+    type: CK_BBOOL
+    default: CK_TRUE
+
+  CKA_DECRYPT:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_SIGN:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_SIGN_RECOVER:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_UNWRAP:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_EXTRACTABLE:
+    footnotes: [8, 9, 12]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_ALWAYS_SENSITIVE:
+    footnotes: [2, 4, 6]
+    type: CK_BBOOL
+
+  CKA_NEVER_EXTRACTABLE:
+    footnotes: [2, 4, 6]
+    type: CK_BBOOL
+
+  CKA_WRAP_WITH_TRUSTED:
+    footnotes: [11]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_UNWRAP_TEMPLATE:
+    unimplemented: true
+
+###
+# Secret key objects
+###
+
+- name: secret_key
+  superclass: key
+
+  CKA_CLASS:
+    value: CKO_SECRET_KEY
+
+  CKA_SENSITIVE:
+    footnotes: [8, 11]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_ENCRYPT:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_DECRYPT:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_SIGN:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_VERIFY:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_WRAP:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_UNWRAP:
+    footnotes: [8, 9]
+    type: CK_BBOOL
+
+  CKA_EXTRACTABLE:
+    footnotes: [8, 9, 12]
+    type: CK_BBOOL
+
+  CKA_ALWAYS_SENSITIVE:
+    footnotes: [2, 4, 6]
+    type: CK_BBOOL
+
+  CKA_NEVER_EXTRACTABLE:
+    footnotes: [2, 4, 6]
+    type: CK_BBOOL
+
+  CKA_CHECK_VALUE:
+    type: bytearray
+
+  CKA_WRAP_WITH_TRUSTED:
+    footnotes: [11]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_TRUSTED:
+    footnotes: [10]
+    type: CK_BBOOL
+    default: CK_FALSE
+
+  CKA_WRAP_TEMPLATE:
+    unimplemented: true
+
+  CKA_UNWRAP_TEMPLATE:
+    unimplemented: true
+
+###
+# Domain parameter objects
+###
+
+- name: domain_parameters
+  superclass: storage
+
+  CKA_CLASS:
+    value: CKO_DOMAIN_PARAMETERS
+
+  CKA_KEY_TYPE:
+    footnotes: [1]
+    type: CK_KEY_TYPE
+
+  CKA_LOCAL:
+    footnotes: [2, 4]
+    type: CK_BBOOL
+
+###
+# Mechanism objects
+###
+
+- name: mechanism
+  superclass: object
+
+  CKA_CLASS:
+    value: CKO_MECHANISM_INFO
+
+  CKA_MECHANISM_TYPE:
+    type: CK_MECHANISM_TYPE
+
+###
+# RSA public key objects
+###
+
+- name: rsa_public_key
+  superclass: public_key
+  concrete: true
+
+  CKA_KEY_TYPE:
+    value: CKK_RSA
+
+  CKA_MODULUS:
+    footnotes: [1, 4]
+    type: biginteger
+
+  CKA_MODULUS_BITS:
+    footnotes: [2, 3]
+    type: CK_ULONG
+
+  CKA_PUBLIC_EXPONENT:
+    footnotes: [1]
+    type: biginteger
+    value: 0x10001              # We only allow F4 as public exponent
+
+###
+# RSA private key objects
+###
+
+- name: rsa_private_key
+  superclass: private_key
+  concrete: true
+
+  CKA_KEY_TYPE:
+    value: CKK_RSA
+
+  CKA_MODULUS:
+    footnotes: [1, 4, 6]
+    type: biginteger
+
+  CKA_PUBLIC_EXPONENT:
+    footnotes: [4, 6]
+    type: biginteger
+    value: 0x10001              # We only allow F4 as public exponent
+
+  CKA_PRIVATE_EXPONENT:
+    footnotes: [1, 4, 6, 7]
+    type: biginteger
+
+  CKA_PRIME_1:
+    footnotes: [4, 6, 7]
+    type: biginteger
+
+  CKA_PRIME_2:
+    footnotes: [4, 6, 7]
+    type: biginteger
+
+  CKA_EXPONENT_1:
+    footnotes: [4, 6, 7]
+    type: biginteger
+
+  CKA_EXPONENT_2:
+    footnotes: [4, 6, 7]
+    type: biginteger
+
+  CKA_COEFFICIENT:
+    footnotes: [4, 6, 7]
+    type: biginteger
+
+###
+# Eliptic curve public key objects
+###
+
+- name: ec_public_key
+  superclass: public_key
+  concrete: true
+
+  CKA_KEY_TYPE:
+    value: CKK_EC
+
+  CKA_EC_PARAMS:
+    footnotes: [1, 3]
+    type: bytearray
+
+  CKA_EC_POINT:
+    footnotes: [1, 4]
+    type: bytearray
+
+###
+# Elliptic curve private key objects
+###
+
+- name: ec_private_key
+  superclass: private_key
+  concrete: true
+
+  CKA_KEY_TYPE:
+    value: CKK_EC
+
+  CKA_EC_PARAMS:
+    footnotes: [1, 4, 6]
+    type: bytearray
+
+  CKA_VALUE:
+    footnotes: [1, 4, 6, 7]
+    type: biginteger

@@ -1,0 +1,21 @@
+(module L_1206 (layer F.Cu) (tedit 4289BEAB)
+  (attr smd)
+  (fp_text reference FB7 (at 0 0) (layer B.SilkS) hide
+    (effects (font (size 1.524 1.524) (thickness 0.05)) (justify mirror))
+  )
+  (fp_text value "" (at 0 0) (layer Cmts.User)
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (pad 1 smd rect (at 0 -1.4) (size 1.8 1.4) (layers F.Cu F.Paste F.Mask))
+  (pad 2 smd rect (at 0 1.4) (size 1.8 1.4) (layers F.Cu F.Paste F.Mask))
+  (model "wrlshp/User Library-V1206HD.wrl"
+    (offset (xyz 0.05003799924850464 0 0))
+    (scale (xyz 0.39370078740158 0.39370078740158 0.39370078740158))
+    (rotate (xyz 360 360 270))
+  )
+  (model wrlshp/76148CD0-6DD3.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 180))
+  )
+)

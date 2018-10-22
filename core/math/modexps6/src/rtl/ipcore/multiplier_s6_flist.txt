@@ -1,0 +1,14 @@
+# Output products list for <multiplier_s6>
+multiplier_s6.asy
+multiplier_s6.gise
+multiplier_s6.ngc
+multiplier_s6.sym
+multiplier_s6.v
+multiplier_s6.veo
+multiplier_s6.xco
+multiplier_s6.xise
+multiplier_s6\doc\mult_gen_ds255.pdf
+multiplier_s6\doc\mult_gen_v11_2_readme.txt
+multiplier_s6\doc\mult_gen_v11_2_vinfo.html
+multiplier_s6_flist.txt
+multiplier_s6_xmdf.tcl

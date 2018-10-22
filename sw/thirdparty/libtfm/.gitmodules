@@ -1,0 +1,3 @@
+[submodule "tomsfastmath"]
+	path = tomsfastmath
+	url = https://github.com/libtom/tomsfastmath.git

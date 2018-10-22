@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name Cryptech_Alpha)(type Legacy)(uri ${KIPRJMOD}/Cryptech_Alpha.lib)(options "")(descr ""))
+)

@@ -1,0 +1,405 @@
+#!/usr/bin/env python
+
+"""
+Generate a C header file based on a YAML description of PKCS #11
+attributes.  See comments in attributes.yaml for details.
+"""
+
+# Author: Rob Austein
+# Copyright (c) 2015, NORDUnet A/S
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+# - Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+#
+# - Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+# - Neither the name of the NORDUnet nor the names of its contributors may
+#   be used to endorse or promote products derived from this software
+#   without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# This requires a third-party YAML parser.  On Debian-family Linux,
+# you can install this with:
+#
+#   sudo apt-get install python-yaml
+
+import os
+import sys
+import yaml
+import argparse
+
+
+def define_flags(flag_names):
+  """
+  Flag definitions.  Called later, here at front of program just to
+  make them easier to find.
+  """
+
+  flag_names.create("DEFAULT_VALUE", "Value field contains default")
+  flag_names.footnote( 1, "REQUIRED_BY_CREATEOBJECT")
+  flag_names.footnote( 2, "FORBIDDEN_BY_CREATEOBJECT")
+  flag_names.footnote( 3, "REQUIRED_BY_GENERATE")
+  flag_names.footnote( 4, "FORBIDDEN_BY_GENERATE")
+  flag_names.footnote( 5, "REQUIRED_BY_UNWRAP")
+  flag_names.footnote( 6, "FORBIDDEN_BY_UNWRAP")
+  flag_names.footnote( 7, "SENSITIVE")
+  flag_names.footnote( 8, "PERHAPS_MODIFIABLE")
+  flag_names.footnote( 9, "DEFAULT_IS_TOKEN_SPECIFIC")
+  flag_names.footnote(10, "ONLY_SO_USER_CAN_SET")
+  flag_names.footnote(11, "LATCHES_WHEN_TRUE")
+  flag_names.footnote(12, "LATCHES_WHEN_FALSE")
+
+
+class PKCS11ParseError(Exception):
+  "Failure parsing PCKS #11 object definitions from YAML data."
+
+
+def write_lines(*lines, **d):
+  """
+  Utility to simplify writing formatted text to the output stream.
+  """
+
+  for line in lines:
+    args.output_file.write((line % d) + "\n")
+
+
+class Flags(object):
+  """
+  Descriptor flag database.
+
+  Many of these are derived from PKCS #11 Table 15  footnotes
+  """
+
+  prefix = "P11_DESCRIPTOR_"            # Prefix string for all descriptor flags
+
+  def __init__(self):
+    self.names = []
+    self.notes = {}
+    self.width = 0
+
+  def create(self, name, comment = None):
+    """
+    Create a descriptor flag.
+    """
+
+    assert len(self.names) < 32
+    name = self.prefix + name
+    self.names.append((name, comment))
+    if len(name) > self.width:
+      self.width = len(name)
+
+  def footnote(self, number, name):
+    """
+    Create a descriptor flag for a PKCS #11 table 15 footnote.
+    """
+
+    assert number not in self.notes
+    self.create(name, "Section 10.2 table 15 footnote #%2d" % number)
+    self.notes[number] = self.prefix + name
+
+  def write(self):
+    """
+    Generate the flags, assigning bit positions as we go.
+    """
+
+    assert len(self.names) < 32
+    self.width = (((self.width + 4) >> 2) << 2) - 1
+    bit = 1
+    for name, comment in self.names:
+      format = "#define %(name)s 0x%(bit)08x"
+      if comment is not None:
+        format += "  /* %(comment)s */"
+      write_lines(format, bit = bit, comment = comment, name = "%-*s" % (self.width, name))
+      bit <<= 1
+
+
+class AttributeNumbers(dict):
+  """
+  Attribute names and numbers scraped (yuck) from pkcs11t.h.
+  """
+
+  def __init__(self, filename):
+    with open(filename, "r") as f:
+      for line in f:
+        word = line.split()
+        if len(word) <= 2 or word[0] != "#define" or not word[1].startswith("CKA_"):
+          continue
+        if word[2] in self:
+          continue
+        if word[2].startswith("(CKF_ARRAY_ATTRIBUTE|"):
+          word[2] = word[2].translate(None, "()").split("|")[1]
+        self[word[1]] = int(word[2], 16)
+
+
+class Attribute(object):
+  """
+  Definition of one attribute.
+  """
+
+  def __init__(self, name, type = None, footnotes = None, default = None, value = None, unimplemented = False):
+    assert value is None or default is None
+    self.name = name
+    self.type = type
+    self.footnotes = footnotes
+    self.default = self.convert_integers(default)
+    self.value   = self.convert_integers(value)
+    self.unimplemented = unimplemented
+
+  @staticmethod
+  def convert_integers(val):
+    """
+    Convert a non-negative integer initialization value into a byte array.
+    """
+
+    if not isinstance(val, (int, long)):
+      return val
+    if val < 0:
+      raise ValueError("Negative integers not legal here: %s" % val)
+    bytes = []
+    while val > 0:
+      bytes.insert(0, val & 0xFF)
+      val >>= 8
+    return bytes or [0]
+
+  def inherit(self, other):
+    """
+    Merge values from paraent attribute definition, if any.
+    """
+
+    for k in ("type", "footnotes", "default", "value"):
+      if getattr(self, k) is None:
+        setattr(self, k, getattr(other, k))
+    self.unimplemented = self.unimplemented or other.unimplemented
+
+  def format_flags(self):
+    """
+    Generate the descriptor flags field.
+    """
+
+    flags = []
+    if self.footnotes:
+      flags.extend(flag_names.notes[f] for f in self.footnotes)
+    if self.value is None and self.default is not None:
+      flags.append("P11_DESCRIPTOR_DEFAULT_VALUE")
+    flags = " | ".join(flags)
+    return flags or "0"
+
+  def format_size(self):
+    """
+    Generate the descriptor size field.
+    """
+
+    if isinstance(self.type, str) and self.type.startswith("CK_"):
+      return "sizeof(%s)" % self.type
+    elif self.type in ("rfc2279string", "biginteger", "bytearray"):
+      return "0"
+    else:
+      raise PKCS11ParseError("Unknown meta-type %r" % self.type)
+
+  def format_length(self):
+    """
+    Generate the descriptor length field.
+    """
+
+    value = self.value or self.default
+    if isinstance(value, list):
+      return "sizeof(const_0x%s)" % "".join("%02x" % v for v in value)
+    elif value and isinstance(self.type, str) and self.type.startswith("CK_"):
+      return "sizeof(%s)" % self.type
+    else:
+      return "0"
+
+  def format_value(self):
+    """
+    Generate the descriptor value field.
+    """
+
+    value = self.value or self.default
+    if not value:
+      return "NULL_PTR"
+    elif isinstance(value, list):
+      return "const_0x" + "".join("%02x" % v for v in value)
+    else:
+      return "&const_" + value
+
+  def format_constant(self, constants):
+    """
+    Generate constant initializer values.  These are merged so that we
+    only end up declaring one copy of each initializer value no matter
+    how many attributes use it.
+    """
+
+    value = self.value or self.default
+    if not self.unimplemented and value:
+      if isinstance(value, list):
+        constants.add("static const CK_BYTE const_%s[] = { %s };" % (
+          "0x" + "".join("%02x" % v for v in value),
+          ", ".join("0x%02x" % v for v in value)))
+      else:
+        constants.add("static const %s const_%s = %s;" % (self.type, value, value))
+
+  def generate(self):
+    """
+    Generate the descriptor line for this attribute.
+    """
+
+    if not self.unimplemented:
+      args.output_file.write("  { %s, %s, %s, %s, %s },\n" % (
+        self.name, self.format_size(), self.format_length(), self.format_value(), self.format_flags()))
+
+
+class Class(object):
+  """
+  A PKCS #11 class.
+  """
+
+  def __init__(self, db, name, superclass = None, concrete = False, **attrs):
+    assert all(a.startswith("CKA_") for a in attrs), "Non-attribute: %r" % [a for a in attrs if not a.startswith("CKA_")]
+    self.attributes = dict((k, Attribute(k, **v)) for k, v in attrs.iteritems())
+    self.db = db
+    self.name = name
+    self.superclass = superclass
+    self.concrete = concrete
+
+  def inherit(self, other):
+    """
+    Inherit attributes from parent type.
+    """
+
+    for k, v in other.attributes.iteritems():
+      if k not in self.attributes:
+        self.attributes[k] = v
+      else:
+        self.attributes[k].inherit(v)
+
+  def collect_constants(self, constants):
+    """
+    Collect initialization constants for all attributes.
+    """
+
+    if self.concrete:
+      for a in self.attributes.itervalues():
+        a.format_constant(constants)
+
+  def generate(self):
+    """
+    Generate a descriptor for this type.
+    """
+
+    if self.concrete:
+
+      write_lines("",
+                  "static const p11_attribute_descriptor_t p11_attribute_descriptor_%(name)s[] = {",
+                  name = self.name)
+
+      for a in sorted(self.attributes, key = lambda x: attribute_numbers[x]):
+        self.attributes[a].generate()
+
+      write_lines("};",
+                  "",
+                  "static const p11_descriptor_t p11_descriptor_%(name)s = {",
+                  "  p11_attribute_descriptor_%(name)s,",
+                  "  sizeof(p11_attribute_descriptor_%(name)s)/sizeof(p11_attribute_descriptor_t)",
+                  "};",
+                  name = self.name)
+
+  def keyclassmap(self):
+    """
+    Generate a keyclass map entry if this is a concrete key type.
+    """
+
+    if self.concrete and all(k in self.attributes and self.attributes[k].value for k in ("CKA_CLASS", "CKA_KEY_TYPE")):
+      write_lines(" { %s, %s, &p11_descriptor_%s }," % (
+        self.attributes["CKA_CLASS"].value, self.attributes["CKA_KEY_TYPE"].value, self.name))
+
+
+class DB(object):
+  """
+  Object type database parsed from YAML
+  """
+
+  def __init__(self, y):
+    self.ordered = [Class(self, **y) for y in y]
+    self.named = dict((c.name, c) for c in self.ordered)
+    for c in self.ordered:
+      if c.superclass is not None:
+        c.inherit(self.named[c.superclass])
+
+  def generate(self):
+    """
+    Generate output for everything in the database.
+    """
+
+    constants = set()
+    for c in self.ordered:
+      c.collect_constants(constants)
+    for constant in sorted(constants):
+      write_lines(constant)
+    for c in self.ordered:
+      c.generate()
+    write_lines("",
+                "static const p11_descriptor_keyclass_map_t p11_descriptor_keyclass_map[] = {")
+    for c in self.ordered:
+      c.keyclassmap()
+    write_lines("};")
+
+# Main program
+
+parser = argparse.ArgumentParser(description = __doc__, formatter_class = argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument("--pkcs11t-file", help = "Alternate location for pkcs11t.h",                            default = "pkcs11t.h")
+parser.add_argument("yaml_file",      help = "Input YAML file", nargs = "?", type = argparse.FileType("r"), default = sys.stdin)
+parser.add_argument("output_file",    help = "Output .h file",  nargs = "?", type = argparse.FileType("w"), default = sys.stdout)
+args = parser.parse_args()
+
+attribute_numbers = AttributeNumbers(args.pkcs11t_file)
+
+db = DB(yaml.load(args.yaml_file))
+
+args.output_file.write('''\
+/*
+ * This file was generated automatically from %(input)s by %(script)s.  Do not edit this file directly.
+ */
+
+typedef struct {
+  CK_ATTRIBUTE_TYPE type;
+  CK_ULONG size;                        /* Size in bytes if this is a fixed-length attribute */
+  CK_ULONG length;                      /* Length in bytes of the object to which value points */
+  const void *value;                    /* Default or constant depending on P11_DESCRIPTOR_DEFAULT_VALUE */
+  unsigned long flags;                  /* (NULL value with P11_DESCRIPTOR_DEFAULT_VALUE means zero length default */
+} p11_attribute_descriptor_t;
+
+typedef struct {
+  const p11_attribute_descriptor_t *attributes;
+  CK_ULONG n_attributes;
+} p11_descriptor_t;
+
+typedef struct {
+  CK_OBJECT_CLASS object_class;
+  CK_KEY_TYPE key_type;
+  const p11_descriptor_t *descriptor;
+} p11_descriptor_keyclass_map_t;
+
+''' % dict(script = os.path.basename(sys.argv[0]), input  = args.yaml_file.name))
+
+flag_names = Flags()
+define_flags(flag_names)
+flag_names.write()
+write_lines("")
+db.generate()

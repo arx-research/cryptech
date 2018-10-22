@@ -1,0 +1,204 @@
+#======================================================================
+#
+# alpha_fmc.ucf
+# -------------------
+# Constraint file for implementing the Cryptech Alpha base
+# for the Xilinx Artix-7 200T on the Alpha.
+#
+#
+# Author: Pavel Shatov
+# Copyright (c) 2016, NORDUnet A/S All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# - Redistributions of source code must retain the above copyright
+#   notice, this list of conditions and the following disclaimer.
+#
+# - Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+# - Neither the name of the NORDUnet nor the names of its contributors may
+#   be used to endorse or promote products derived from this software
+#   without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#======================================================================
+
+
+#--------------------------------------------------------------------------------
+# GCLK Timing (fixed at 50 MHz)
+#--------------------------------------------------------------------------------
+NET  "gclk_pin" TNM_NET = TNM_gclk;
+TIMESPEC  TS_gclk = PERIOD TNM_gclk 20 ns HIGH 50%;
+
+
+#-------------------------------------------------------------------------------
+# FMC_CLK Timing (can be up to 90 MHz)
+#-------------------------------------------------------------------------------
+NET  "fmc_clk" TNM_NET = TNM_fmc_clk;
+TIMESPEC  TS_fmc_clk = PERIOD TNM_fmc_clk 90 MHz HIGH 50%;
+
+
+#-------------------------------------------------------------------------------
+# FPGA Pinout
+#-------------------------------------------------------------------------------
+#
+NET "led_pins<0>" LOC = "U3";
+NET "led_pins<1>" LOC = "T1";
+NET "led_pins<2>" LOC = "W22";
+NET "led_pins<3>" LOC = "AA20";
+#
+NET "led_pins<*>" IOSTANDARD = "LVCMOS33";
+NET "led_pins<*>" SLEW = SLOW;
+NET "led_pins<*>" DRIVE = 8;
+#
+NET  "gclk_pin"        LOC = "D17"  | IOSTANDARD = "LVCMOS33" ;
+#
+NET  "fmc_clk"         LOC = "W11"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_ne1"         LOC = "V5"   | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_noe"         LOC = "W16"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_nwe"         LOC = "AA6"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_nl"          LOC = "W17"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_nwait"       LOC = "Y6"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+#
+NET  "fmc_a<0>"        LOC = "Y17"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<1>"        LOC = "AB16" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<2>"        LOC = "AA16" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<3>"        LOC = "Y16"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<4>"        LOC = "AB17" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<5>"        LOC = "AA13" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<6>"        LOC = "AB13" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<7>"        LOC = "AA15" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<8>"        LOC = "AB15" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<9>"        LOC = "Y13"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<10>"       LOC = "AA14" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<11>"       LOC = "Y14"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<12>"       LOC = "AB10" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<13>"       LOC = "V2"   | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<14>"       LOC = "AB12" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<15>"       LOC = "AB8"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<16>"       LOC = "AA9"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<17>"       LOC = "AA8"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<18>"       LOC = "Y7"   | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<19>"       LOC = "AB21" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<20>"       LOC = "AB22" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<21>"       LOC = "AB20" | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<22>"       LOC = "Y21"  | IOSTANDARD = "LVCMOS33" ;
+NET  "fmc_a<23>"       LOC = "Y22"  | IOSTANDARD = "LVCMOS33" ;
+#NET "fmc_a<24>"       LOC = "AB18" | IOSTANDARD = "LVCMOS33" ;
+#NET "fmc_a<25>"       LOC = "AA19" | IOSTANDARD = "LVCMOS33" ;
+#
+NET  "fmc_d<0>"        LOC = "AB7"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<1>"        LOC = "AB6"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<2>"        LOC = "U1"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<3>"        LOC = "U2"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<4>"        LOC = "AB11" | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<5>"        LOC = "AA11" | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<6>"        LOC = "Y11"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<7>"        LOC = "Y12"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<8>"        LOC = "Y18"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<9>"        LOC = "AA21" | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<10>"       LOC = "W20"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<11>"       LOC = "N15"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<12>"       LOC = "U20"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<13>"       LOC = "AA1"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<14>"       LOC = "AB1"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<15>"       LOC = "AB2"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<16>"       LOC = "AB3"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<17>"       LOC = "Y3"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<18>"       LOC = "AA3"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<19>"       LOC = "AA5"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<20>"       LOC = "AB5"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<21>"       LOC = "Y4"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<22>"       LOC = "AA4"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<23>"       LOC = "V4"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<24>"       LOC = "W10"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<25>"       LOC = "R4"   | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<26>"       LOC = "W12"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<27>"       LOC = "W14"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<28>"       LOC = "V20"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<29>"       LOC = "V18"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<30>"       LOC = "R21"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+NET  "fmc_d<31>"       LOC = "P21"  | IOSTANDARD = "LVCMOS33" | SLEW = "FAST" | DRIVE = 8;
+
+NET  "ct_noise"        LOC = "W19"  | IOSTANDARD = "LVCMOS33" ;
+
+NET  "mkm_sclk"        LOC = "V3"   | IOSTANDARD = "LVCMOS33" ;
+NET  "mkm_cs_n"        LOC = "W2"   | IOSTANDARD = "LVCMOS33" ;
+NET  "mkm_di"          LOC = "W1"   | IOSTANDARD = "LVCMOS33" ; # MKM_FPGA_MOSI
+NET  "mkm_do"          LOC = "Y1"   | IOSTANDARD = "LVCMOS33" ; # MKM_FPGA_MISO
+
+#-------------------------------------------------------------------------------
+# FMC Input Timing
+#-------------------------------------------------------------------------------
+#
+# The following timing values were derived from pages 173-175 of the STM32F429
+# datasheet. Control signals NE1, NL and NWE all have different timing values.
+# Instead of writing individual constraints for every control signal, the most
+# strict constraint is applied to all control signals. This should not cause
+# any P&R issues, since Spartan-6 (and Artix-7) can handle 90 MHz easily.
+#
+# NOE signal is not constrained, since it drives "T" input of IOBUF primitive.
+#
+# Data and Address buses also have different timings, with Data bus timing being
+# more strict. The same approach is used here, i.e. timing for Data bus is
+# applied to Address bus too.
+#
+# Oh, and stupid datasheet doesn't explicitly specify hold time for the data bus!
+#
+
+NET  "fmc_d<*>" TNM = "TNM_FMC_IN_DATA" ;
+NET  "fmc_a<*>" TNM = "TNM_FMC_IN_ADDR" ;
+
+NET  "fmc_ne1"  TNM = "TNM_FMC_IN_CONTROL" ;
+NET  "fmc_nl"   TNM = "TNM_FMC_IN_CONTROL" ;
+NET  "fmc_nwe"  TNM = "TNM_FMC_IN_CONTROL" ;
+
+TIMEGRP  "TNM_FMC_IN_DATA"    OFFSET = IN 3.0 ns VALID  6.0 ns BEFORE "fmc_clk" RISING ;
+TIMEGRP  "TNM_FMC_IN_ADDR"    OFFSET = IN 3.0 ns VALID  6.0 ns BEFORE "fmc_clk" RISING ;
+TIMEGRP  "TNM_FMC_IN_CONTROL" OFFSET = IN 5.0 ns VALID 10.0 ns BEFORE "fmc_clk" RISING ;
+
+#-------------------------------------------------------------------------------
+# FMC Output Timing
+#-------------------------------------------------------------------------------
+#
+# NWAIT signal is not constrained, since it is polled by STM32.
+#
+
+NET  "fmc_d<*>" TNM = "TNM_FMC_OUT_DATA" ;
+
+TIMEGRP  "TNM_FMC_OUT_DATA" OFFSET = OUT 16.7 ns AFTER "fmc_clk" FALLING;
+
+
+#-------------------------------------------------------------------------------
+# CDC Paths
+#-------------------------------------------------------------------------------
+INST  "fmc/fmc_cdc/cdc_fmc_sys/src_ff"     TNM = "TNM_from_fmc_clk";
+INST  "fmc/fmc_cdc/cdc_fmc_sys/src_latch*" TNM = "TNM_from_fmc_clk";
+INST  "fmc/fmc_cdc/cdc_fmc_sys/ff_sync*"   TNM = "TNM_to_sys_clk";
+INST  "fmc/fmc_cdc/cdc_fmc_sys/dst_latch*" TNM = "TNM_to_sys_clk";
+
+INST  "fmc/fmc_cdc/cdc_sys_fmc/src_ff"     TNM = "TNM_from_sys_clk";
+INST  "fmc/fmc_cdc/cdc_sys_fmc/src_latch*" TNM = "TNM_from_sys_clk";
+INST  "fmc/fmc_cdc/cdc_sys_fmc/ff_sync*"   TNM = "TNM_to_fmc_clk";
+INST  "fmc/fmc_cdc/cdc_sys_fmc/dst_latch*" TNM = "TNM_to_fmc_clk";
+
+TIMESPEC  "TS_fmc_clk_2_sys_clk" = FROM "TNM_from_fmc_clk" TO "TNM_to_sys_clk" TIG;
+TIMESPEC  "TS_sys_clk_2_fmc_clk" = FROM "TNM_from_sys_clk" TO "TNM_to_fmc_clk" TIG;
+
+#======================================================================
+# EOF alpha_fmc.ucf
+#======================================================================

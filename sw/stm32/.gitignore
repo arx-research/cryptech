@@ -1,0 +1,10 @@
+*.a
+*.bin
+*.elf
+*.hex
+*.lst
+*.map
+*.mo
+*.o
+*~
+libraries/libtfm/tfm.h

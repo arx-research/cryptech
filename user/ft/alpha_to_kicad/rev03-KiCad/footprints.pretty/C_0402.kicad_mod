@@ -1,0 +1,21 @@
+(module C_0402 (layer F.Cu) (tedit 4289BEAB)
+  (attr smd)
+  (fp_text reference C215 (at 0 0) (layer F.SilkS) hide
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (fp_text value "0402 CAPACITOR" (at 0 0) (layer Cmts.User)
+    (effects (font (size 1.524 1.524) (thickness 0.05)))
+  )
+  (pad 2 smd rect (at 0.5 0) (size 0.45 0.6) (layers F.Cu F.Paste F.Mask))
+  (pad 1 smd rect (at -0.5 0) (size 0.45 0.6) (layers F.Cu F.Paste F.Mask))
+  (model "wrlshp/SW3dPS-0402 SMD Capacitor.wrl"
+    (at (xyz 0 -0 0))
+    (scale (xyz 0.39370078740158 0.39370078740158 0.39370078740158))
+    (rotate (xyz 270 360 0))
+  )
+  (model wrlshp/ECAF1ED8-FCC0.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 360))
+  )
+)
