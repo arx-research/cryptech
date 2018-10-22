@@ -1,0 +1,225 @@
+[submodule "aes_speed"]
+	path = aes_speed
+	url = https://git.cryptech.is/core/cipher/aes_speed.git
+[submodule "aes"]
+	path = aes
+	url = https://git.cryptech.is/core/cipher/aes.git
+[submodule "chacha"]
+	path = chacha
+	url = https://git.cryptech.is/core/cipher/chacha.git
+[submodule "coretest"]
+	path = coretest
+	url = https://git.cryptech.is/core/comm/coretest.git
+[submodule "eim"]
+	path = eim
+	url = https://git.cryptech.is/core/comm/eim.git
+[submodule "fmc"]
+	path = fmc
+	url = https://git.cryptech.is/core/comm/fmc.git
+[submodule "i2c"]
+	path = i2c
+	url = https://git.cryptech.is/core/comm/i2c.git
+[submodule "uart"]
+	path = uart
+	url = https://git.cryptech.is/core/comm/uart.git
+[submodule "sha1"]
+	path = sha1
+	url = https://git.cryptech.is/core/hash/sha1.git
+[submodule "sha256"]
+	path = sha256
+	url = https://git.cryptech.is/core/hash/sha256.git
+[submodule "sha3"]
+	path = sha3
+	url = https://git.cryptech.is/core/hash/sha3.git
+[submodule "sha512"]
+	path = sha512
+	url = https://git.cryptech.is/core/hash/sha512.git
+[submodule "curve25519lib"]
+	path = curve25519lib
+	url = https://git.cryptech.is/core/math/curve25519lib.git
+[submodule "ecdsalib"]
+	path = ecdsalib
+	url = https://git.cryptech.is/core/math/ecdsalib.git
+[submodule "modexpa7"]
+	path = modexpa7
+	url = https://git.cryptech.is/core/math/modexpa7.git
+[submodule "modexps6"]
+	path = modexps6
+	url = https://git.cryptech.is/core/math/modexps6.git
+[submodule "modexp"]
+	path = modexp
+	url = https://git.cryptech.is/core/math/modexp.git
+[submodule "ecdhp256"]
+	path = ecdhp256
+	url = https://git.cryptech.is/core/pkey/ecdhp256.git
+[submodule "ecdhp384"]
+	path = ecdhp384
+	url = https://git.cryptech.is/core/pkey/ecdhp384.git
+[submodule "ecdsa256"]
+	path = ecdsa256
+	url = https://git.cryptech.is/core/pkey/ecdsa256.git
+[submodule "ecdsa384"]
+	path = ecdsa384
+	url = https://git.cryptech.is/core/pkey/ecdsa384.git
+[submodule "ed25519"]
+	path = ed25519
+	url = https://git.cryptech.is/core/pkey/ed25519.git
+[submodule "alpha"]
+	path = alpha
+	url = https://git.cryptech.is/core/platform/alpha.git
+[submodule "common"]
+	path = common
+	url = https://git.cryptech.is/core/platform/common.git
+[submodule "novena"]
+	path = novena
+	url = https://git.cryptech.is/core/platform/novena.git
+[submodule "terasic_c5g"]
+	path = terasic_c5g
+	url = https://git.cryptech.is/core/platform/terasic_c5g.git
+[submodule "avalanche_entropy"]
+	path = avalanche_entropy
+	url = https://git.cryptech.is/core/rng/avalanche_entropy.git
+[submodule "rosc_entropy"]
+	path = rosc_entropy
+	url = https://git.cryptech.is/core/rng/rosc_entropy.git
+[submodule "trng"]
+	path = trng
+	url = https://git.cryptech.is/core/rng/trng.git
+[submodule "vndecorrelator"]
+	path = vndecorrelator
+	url = https://git.cryptech.is/core/rng/vndecorrelator.git
+[submodule "mkmif"]
+	path = mkmif
+	url = https://git.cryptech.is/core/util/mkmif.git
+[submodule "design"]
+	path = design
+	url = https://git.cryptech.is/doc/design.git
+[submodule "presentations"]
+	path = presentations
+	url = https://git.cryptech.is/doc/presentations.git
+[submodule "hardware"]
+	path = hardware
+	url = https://git.cryptech.is/hardware.git
+[submodule "cryptlib"]
+	path = cryptlib
+	url = https://git.cryptech.is/sw/cryptlib.git
+[submodule "libhal"]
+	path = libhal
+	url = https://git.cryptech.is/sw/libhal.git
+[submodule "pkcs11"]
+	path = pkcs11
+	url = https://git.cryptech.is/sw/pkcs11.git
+[submodule "stm32"]
+	path = stm32
+	url = https://git.cryptech.is/sw/stm32.git
+[submodule "tamper"]
+	path = tamper
+	url = https://git.cryptech.is/sw/tamper.git
+[submodule "ekermit"]
+	path = ekermit
+	url = https://git.cryptech.is/sw/thirdparty/ekermit.git
+[submodule "libtfm"]
+	path = libtfm
+	url = https://git.cryptech.is/sw/thirdparty/libtfm.git
+[submodule "sqlite3"]
+	path = sqlite3
+	url = https://git.cryptech.is/sw/thirdparty/sqlite3.git
+[submodule "coretest_bp_entropy"]
+	path = coretest_bp_entropy
+	url = https://git.cryptech.is/test/coretest_bp_entropy.git
+[submodule "coretest_fpga_entropy"]
+	path = coretest_fpga_entropy
+	url = https://git.cryptech.is/test/coretest_fpga_entropy.git
+[submodule "coretest_test_core"]
+	path = coretest_test_core
+	url = https://git.cryptech.is/test/coretest_test_core.git
+[submodule "external_avalanche_entropy"]
+	path = external_avalanche_entropy
+	url = https://git.cryptech.is/test/external_avalanche_entropy.git
+[submodule "fpga_entropy"]
+	path = fpga_entropy
+	url = https://git.cryptech.is/test/fpga_entropy.git
+[submodule "novena_base"]
+	path = novena_base
+	url = https://git.cryptech.is/test/novena_base.git
+[submodule "novena_entropy"]
+	path = novena_entropy
+	url = https://git.cryptech.is/test/novena_entropy.git
+[submodule "novena_i2c_simple"]
+	path = novena_i2c_simple
+	url = https://git.cryptech.is/test/novena_i2c_simple.git
+[submodule "novena_trng"]
+	path = novena_trng
+	url = https://git.cryptech.is/test/novena_trng.git
+[submodule "test_core"]
+	path = test_core
+	url = https://git.cryptech.is/test/test_core.git
+[submodule "alpha_to_kicad"]
+	path = alpha_to_kicad
+	url = https://git.cryptech.is/user/ft/alpha_to_kicad.git
+[submodule "bootstrap"]
+	path = bootstrap
+	url = https://git.cryptech.is/user/ft/bootstrap.git
+[submodule "libcli"]
+	path = libcli
+	url = https://git.cryptech.is/user/ft/libcli.git
+[submodule "stm32-avalanche-noise"]
+	path = stm32-avalanche-noise
+	url = https://git.cryptech.is/user/ft/stm32-avalanche-noise.git
+[submodule "stm32-dev-bridge"]
+	path = stm32-dev-bridge
+	url = https://git.cryptech.is/user/ft/stm32-dev-bridge.git
+[submodule "benchmark"]
+	path = benchmark
+	url = https://git.cryptech.is/user/jakob/benchmark.git
+[submodule "keywrap"]
+	path = keywrap
+	url = https://git.cryptech.is/user/js/keywrap.git
+[submodule "toggle"]
+	path = toggle
+	url = https://git.cryptech.is/user/js/toggle.git
+[submodule "hashsig-naive"]
+	path = hashsig-naive
+	url = https://git.cryptech.is/user/paul/hashsig-naive.git
+[submodule "ModExpA7"]
+	path = ModExpA7
+	url = https://git.cryptech.is/user/shatov/ModExpA7.git
+[submodule "curve25519_fpga_model"]
+	path = curve25519_fpga_model
+	url = https://git.cryptech.is/user/shatov/curve25519_fpga_model.git
+[submodule "ecdh_fpga_model"]
+	path = ecdh_fpga_model
+	url = https://git.cryptech.is/user/shatov/ecdh_fpga_model.git
+[submodule "ecdsa_fpga_model"]
+	path = ecdsa_fpga_model
+	url = https://git.cryptech.is/user/shatov/ecdsa_fpga_model.git
+[submodule "fmc-test"]
+	path = fmc-test
+	url = https://git.cryptech.is/user/shatov/fmc-test.git
+[submodule "streebog_tester"]
+	path = streebog_tester
+	url = https://git.cryptech.is/user/shatov/gost/streebog_tester.git
+[submodule "streebog"]
+	path = streebog
+	url = https://git.cryptech.is/user/shatov/gost/streebog.git
+[submodule "modexp_fpga_model"]
+	path = modexp_fpga_model
+	url = https://git.cryptech.is/user/shatov/modexp_fpga_model.git
+[submodule "novena-fmc-arbiter"]
+	path = novena-fmc-arbiter
+	url = https://git.cryptech.is/user/shatov/novena-fmc-arbiter.git
+[submodule "stm32_n25q128"]
+	path = stm32_n25q128
+	url = https://git.cryptech.is/user/shatov/stm32_n25q128.git
+[submodule "stm32_sdram"]
+	path = stm32_sdram
+	url = https://git.cryptech.is/user/shatov/stm32_sdram.git
+[submodule "aes-keywrap"]
+	path = aes-keywrap
+	url = https://git.cryptech.is/user/sra/aes-keywrap.git
+[submodule "build-tools"]
+	path = build-tools
+	url = https://git.cryptech.is/user/sra/build-tools.git
+[submodule "openssl-engine"]
+	path = openssl-engine
+	url = https://git.cryptech.is/user/sra/openssl-engine.git
