@@ -1,6 +1,0 @@
-LIBCRYPTECH_PKCS11_2.0 {
-    global:
-	C_*;
-    local:
-	*;
-};

@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name Cryptech_Alpha_Footprints)(type KiCad)(uri "$(KIPRJMOD)/footprints.pretty")(options "")(descr ""))
-)

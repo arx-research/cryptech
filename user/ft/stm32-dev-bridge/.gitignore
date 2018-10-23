@@ -1,9 +1,0 @@
-*~
-*.o
-*.a
-*.elf
-*.bin
-*.hex
-*.map
-*.lst
-tmp

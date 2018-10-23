@@ -94,9 +94,6 @@
 [submodule "presentations"]
 	path = presentations
 	url = https://git.cryptech.is/doc/presentations.git
-[submodule "hardware"]
-	path = hardware
-	url = https://git.cryptech.is/hardware.git
 [submodule "cryptlib"]
 	path = cryptlib
 	url = https://git.cryptech.is/sw/cryptlib.git
@@ -112,15 +109,6 @@
 [submodule "tamper"]
 	path = tamper
 	url = https://git.cryptech.is/sw/tamper.git
-[submodule "ekermit"]
-	path = ekermit
-	url = https://git.cryptech.is/sw/thirdparty/ekermit.git
-[submodule "libtfm"]
-	path = libtfm
-	url = https://git.cryptech.is/sw/thirdparty/libtfm.git
-[submodule "sqlite3"]
-	path = sqlite3
-	url = https://git.cryptech.is/sw/thirdparty/sqlite3.git
 [submodule "coretest_bp_entropy"]
 	path = coretest_bp_entropy
 	url = https://git.cryptech.is/test/coretest_bp_entropy.git
@@ -223,39 +211,156 @@
 [submodule "x25519_fpga_model.old"]
 	path = x25519_fpga_model.old
 	url = https://git.cryptech.is/user/shatov/x25519_fpga_model.old.git
+[submodule "hardware"]
+	path = hardware
+	url = https://git.cryptech.is/hardware.git
 [submodule "releng/alpha"]
 	path = releng/alpha
 	url = https://git.cryptech.is/releng/alpha.git
 [submodule "releng/novena"]
 	path = releng/novena
 	url = https://git.cryptech.is/releng/novena.git
-[submodule "user/ft/tamper"]
-	path = user/ft/tamper
-	url = https://git.cryptech.is/user/ft/tamper.git
+[submodule "sw/cryptlib"]
+	path = sw/cryptlib
+	url = https://git.cryptech.is/sw/cryptlib.git
+[submodule "sw/libhal"]
+	path = sw/libhal
+	url = https://git.cryptech.is/sw/libhal.git
+[submodule "sw/pkcs11"]
+	path = sw/pkcs11
+	url = https://git.cryptech.is/sw/pkcs11.git
+[submodule "sw/stm32"]
+	path = sw/stm32
+	url = https://git.cryptech.is/sw/stm32.git
 [submodule "sw/tamper"]
 	path = sw/tamper
 	url = https://git.cryptech.is/sw/tamper.git
+[submodule "sw/thirdparty/libtfm"]
+	path = sw/thirdparty/libtfm
+	url = https://git.cryptech.is/sw/thirdparty/libtfm.git
+[submodule "sw/thirdparty/sqlite3"]
+	path = sw/thirdparty/sqlite3
+	url = https://git.cryptech.is/sw/thirdparty/sqlite3.git
+[submodule "test/coretest_bp_entropy"]
+	path = test/coretest_bp_entropy
+	url = https://git.cryptech.is/test/coretest_bp_entropy.git
+[submodule "test/coretest_fpga_entropy"]
+	path = test/coretest_fpga_entropy
+	url = https://git.cryptech.is/test/coretest_fpga_entropy.git
+[submodule "test/coretest_test_core"]
+	path = test/coretest_test_core
+	url = https://git.cryptech.is/test/coretest_test_core.git
+[submodule "test/external_avalanche_entropy"]
+	path = test/external_avalanche_entropy
+	url = https://git.cryptech.is/test/external_avalanche_entropy.git
+[submodule "test/fpga_entropy"]
+	path = test/fpga_entropy
+	url = https://git.cryptech.is/test/fpga_entropy.git
+[submodule "test/novena_base"]
+	path = test/novena_base
+	url = https://git.cryptech.is/test/novena_base.git
+[submodule "test/novena_entropy"]
+	path = test/novena_entropy
+	url = https://git.cryptech.is/test/novena_entropy.git
+[submodule "test/novena_i2c_simple"]
+	path = test/novena_i2c_simple
+	url = https://git.cryptech.is/test/novena_i2c_simple.git
+[submodule "test/novena_trng"]
+	path = test/novena_trng
+	url = https://git.cryptech.is/test/novena_trng.git
+[submodule "test/test_core"]
+	path = test/test_core
+	url = https://git.cryptech.is/test/test_core.git
+[submodule "user/ft/alpha_to_kicad"]
+	path = user/ft/alpha_to_kicad
+	url = https://git.cryptech.is/user/ft/alpha_to_kicad.git
+[submodule "user/ft/bootstrap"]
+	path = user/ft/bootstrap
+	url = https://git.cryptech.is/user/ft/bootstrap.git
+[submodule "user/ft/libcli"]
+	path = user/ft/libcli
+	url = https://git.cryptech.is/user/ft/libcli.git
+[submodule "user/ft/stm32-avalanche-noise"]
+	path = user/ft/stm32-avalanche-noise
+	url = https://git.cryptech.is/user/ft/stm32-avalanche-noise.git
+[submodule "user/ft/stm32-dev-bridge"]
+	path = user/ft/stm32-dev-bridge
+	url = https://git.cryptech.is/user/ft/stm32-dev-bridge.git
+[submodule "user/ft/tamper"]
+	path = user/ft/tamper
+	url = https://git.cryptech.is/user/ft/tamper.git
+[submodule "sw/thirdparty/ekermit"]
+	path = sw/thirdparty/ekermit
+	url = https://git.cryptech.is/sw/thirdparty/ekermit.git
+[submodule "user/jakob/benchmark"]
+	path = user/jakob/benchmark
+	url = https://git.cryptech.is/user/jakob/benchmark.git
 [submodule "user/jakob/tamper"]
 	path = user/jakob/tamper
 	url = https://git.cryptech.is/user/jakob/tamper.git
+[submodule "user/js/keywrap"]
+	path = user/js/keywrap
+	url = https://git.cryptech.is/user/js/keywrap.git
 [submodule "user/js/mkmif"]
 	path = user/js/mkmif
 	url = https://git.cryptech.is/user/js/mkmif.git
-[submodule "core/util/mkmif"]
-	path = core/util/mkmif
-	url = https://git.cryptech.is/core/util/mkmif.git
+[submodule "user/js/toggle"]
+	path = user/js/toggle
+	url = https://git.cryptech.is/user/js/toggle.git
 [submodule "user/ln5/tamper"]
 	path = user/ln5/tamper
 	url = https://git.cryptech.is/user/ln5/tamper.git
+[submodule "user/paul/hashsig-naive"]
+	path = user/paul/hashsig-naive
+	url = https://git.cryptech.is/user/paul/hashsig-naive.git
 [submodule "user/paul/libcli"]
 	path = user/paul/libcli
 	url = https://git.cryptech.is/user/paul/libcli.git
 [submodule "user/shatov/ModExpA7"]
 	path = user/shatov/ModExpA7
 	url = https://git.cryptech.is/user/shatov/ModExpA7.git
+[submodule "user/shatov/curve25519_fpga_model"]
+	path = user/shatov/curve25519_fpga_model
+	url = https://git.cryptech.is/user/shatov/curve25519_fpga_model.git
+[submodule "user/shatov/ecdh_fpga_model"]
+	path = user/shatov/ecdh_fpga_model
+	url = https://git.cryptech.is/user/shatov/ecdh_fpga_model.git
 [submodule "user/shatov/ecdsa256"]
 	path = user/shatov/ecdsa256
 	url = https://git.cryptech.is/user/shatov/ecdsa256.git
 [submodule "user/shatov/ecdsa384"]
 	path = user/shatov/ecdsa384
 	url = https://git.cryptech.is/user/shatov/ecdsa384.git
+[submodule "user/shatov/ecdsa_fpga_model"]
+	path = user/shatov/ecdsa_fpga_model
+	url = https://git.cryptech.is/user/shatov/ecdsa_fpga_model.git
+[submodule "user/shatov/fmc-test"]
+	path = user/shatov/fmc-test
+	url = https://git.cryptech.is/user/shatov/fmc-test.git
+[submodule "user/shatov/modexp_fpga_model"]
+	path = user/shatov/modexp_fpga_model
+	url = https://git.cryptech.is/user/shatov/modexp_fpga_model.git
+[submodule "user/shatov/novena-fmc-arbiter"]
+	path = user/shatov/novena-fmc-arbiter
+	url = https://git.cryptech.is/user/shatov/novena-fmc-arbiter.git
+[submodule "user/shatov/stm32_n25q128"]
+	path = user/shatov/stm32_n25q128
+	url = https://git.cryptech.is/user/shatov/stm32_n25q128.git
+[submodule "user/shatov/stm32_sdram"]
+	path = user/shatov/stm32_sdram
+	url = https://git.cryptech.is/user/shatov/stm32_sdram.git
+[submodule "user/shatov/gost/streebog_tester"]
+	path = user/shatov/gost/streebog_tester
+	url = https://git.cryptech.is/user/shatov/gost/streebog_tester.git
+[submodule "user/shatov/gost/streebog"]
+	path = user/shatov/gost/streebog
+	url = https://git.cryptech.is/user/shatov/gost/streebog.git
+[submodule "user/sra/aes-keywrap"]
+	path = user/sra/aes-keywrap
+	url = https://git.cryptech.is/user/sra/aes-keywrap.git
+[submodule "user/sra/build-tools"]
+	path = user/sra/build-tools
+	url = https://git.cryptech.is/user/sra/build-tools.git
+[submodule "user/sra/openssl-engine"]
+	path = user/sra/openssl-engine
+	url = https://git.cryptech.is/user/sra/openssl-engine.git
